@@ -12,8 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/header_margin"
-        android:layout_marginTop="@dimen/header_margin"
         android:text="@string/hello_world"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 

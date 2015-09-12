@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import cn.six.jump.JumpFromActivity;
-import cn.song.aut.R;
+import cn.six.aut.R;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;

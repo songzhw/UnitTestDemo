@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name="cn.six.first.OneActivity"/>
+        <activity android:name="cn.six.jump.JumpFromActivity"/>
+        <activity android:name="cn.six.jump.JumpToActivity"/>
     </application>
 
 </manifest>

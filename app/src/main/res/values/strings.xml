@@ -1,6 +1,26 @@
 <resources>
-    <string name="app_name">AndroidTestDemo</string>
+    <string name="app_name">AndroidAutoTest</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_jump_from">JumpFromActivity</string>
+    <string name="title_activity_jump_to">JumpToActivity</string>
+
+    <string name="hello_world">Hello Espresso!</string>
+    <string name="change_text">Change text</string>
+    <string name="type_something">type something…</string>
+    <string name="open_activity_and_change_text">Open activity and change text</string>
+    <string name="title_activity_custom_matcher">CustomMatcherActivity</string>
+
+    <string name="instructions">See CustomMatcherActivity.java for valid options or type something ending
+        in \"coffee\".
+    </string>
+    <string name="hint">How do you like your coffee?</string>
+    <string name="validate">Validate</string>
+    <string name="good_choice">Good choice!</string>
+    <string name="bad_choice">Bad choice!</string>
+    <string name="title_activity_long_list">LongListActivity</string>
+
+    <string name="row_label">Clicked on row</string>
+    <string name="column_label">Clicked on column</string>
+
 </resources>

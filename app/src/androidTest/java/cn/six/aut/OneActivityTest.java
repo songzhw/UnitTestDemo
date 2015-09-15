@@ -33,9 +33,6 @@ public class OneActivityTest{
 
     @Test
     public void szwHelloWorld(){
-//        Espresso.onView(ViewMatchers.withText("Hello World!"))
-//                .check(ViewAssertions.matches( ViewMatchers.isDisplayed()));
-
         // static引入 Espresso, ViewMatchers, ViewAssertions
         Activity actv = actvRule.getActivity();
         String hello = actv.getResources().getString(R.string.hello_world);

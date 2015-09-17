@@ -22,5 +22,39 @@
 
     <string name="row_label">Clicked on row</string>
     <string name="column_label">Clicked on column</string>
+    <string name="title_activity_dialer">DialerActivity</string>
+    <string name="title_activity_contacts">ContactsActivity</string>
+
+    <string name="type_a_phone_number">Please enter a number…</string>
+    <string name="button_dial_number">Call Number</string>
+    <string name="button_pick_contact">Pick Number</string>
+    <string name="contacts_activity_placeholder">This a placeholder Activity for a contacts screen.
+        This activity is never opened and does not contain any real contact data for
+        keeping this sample simple and focused.
+    </string>
+
+    <string name="pick_water">Pick body of water</string>
+    <string-array name="bodies_of_water">
+        <item>Pacific Ocean</item>
+        <item>Atlantic Ocean</item>
+        <item>Indian Ocean</item>
+        <item>Southern Ocean</item>
+        <item>Arctic Ocean</item>
+        <item>Mediterranean Sea</item>
+        <item>Caribbean Sea</item>
+        <item>South China Sea</item>
+        <item>Bering Sea</item>
+        <item>Gulf of Mexico</item>
+        <item>Okhotsk Sea</item>
+        <item>East China Sea</item>
+        <item>Hudson Bay</item>
+        <item>Japan Sea</item>
+        <item>Andaman Sea</item>
+        <item>North Sea</item>
+        <item>Red Sea</item>
+        <item>Baltic Sea</item>
+    </string-array>
+    <string name="title_activity_fragment_host">FragmentHostActivity</string>
+    <string name="title_activity_async_task">AsyncTaskActivity</string>
 
 </resources>

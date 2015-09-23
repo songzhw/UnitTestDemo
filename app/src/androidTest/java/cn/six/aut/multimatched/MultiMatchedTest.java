@@ -62,5 +62,35 @@ public class MultiMatchedTest {
 
     }
 
+    /*
+    Still Error.
+    hasSibling() will compare the view itself, which is a bug!
+    */
+    @Test
+    public void testMulti_Fail2(){
+        onView(allOf(
+                withText("abc"),
+                hasSibling(withId(R.id.tv_multi_match_one))
+                )
+        )
+        .check(matches(withId(R.id.tv_multi_match_two)));
+    }
+
+    /*
+    Still Error.
+    hasSibling() will compare the view itself, which is a bug!
+
+    this test proved that hasSibling has a bug
+
+    see the source code of ViewMatchers#hasSibling(), and you will know why this test is failed
+    */
+    @Test
+    public void testMulti_Fail3(){
+        onView(
+                hasSibling(withId(R.id.tv_multi_match_one))
+        )
+         .check(matches(withId (R.id.tv_multi_match_two)));
+    }
+
 
 }

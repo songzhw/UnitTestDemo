@@ -1,4 +1,4 @@
-package cn.six.aut;
+package cn.six.aut.multiwindow;
 
 /**
  * @author hzsongzhengwang

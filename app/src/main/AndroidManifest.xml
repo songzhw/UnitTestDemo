@@ -18,6 +18,11 @@
         <activity android:name="cn.six.first.OneActivity"/>
         <activity android:name="cn.six.jump.JumpFromActivity"/>
         <activity android:name="cn.six.jump.JumpToActivity"/>
+        <activity android:name="cn.six.list.LongListActivity"/>
+        <activity android:name="cn.six.multiwindow.SuggestActivity"/>
+        <activity android:name="cn.six.async.AsyncTaskActivity"/>
+        <activity android:name="cn.six.multimatched.MultiMatchedActv"/>
+
     </application>
 
 </manifest>

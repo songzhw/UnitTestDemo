@@ -3,7 +3,7 @@ package cn.six.aut.async;
 /**
  * @author hzsongzhengwang
  * @date 2015/6/2
- * Copyright 2015 NetEase. All rights reserved.
+ * Copyright 2015 Six. All rights reserved.
  */
 
 import android.support.test.espresso.Espresso;

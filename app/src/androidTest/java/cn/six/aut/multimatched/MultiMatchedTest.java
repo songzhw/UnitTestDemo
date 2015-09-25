@@ -36,7 +36,7 @@ import static org.hamcrest.Matchers.not;
 /**
  * @author hzsongzhengwang
  * @date 2015/9/22
- * Copyright 2015 NetEase. All rights reserved.
+ * Copyright 2015 Six. All rights reserved.
  */
 
 

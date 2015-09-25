@@ -37,7 +37,7 @@ import cn.six.list.LongListActivity;
 /**
  * @author hzsongzhengwang
  * @date 2015/5/27
- * Copyright 2015 NetEase. All rights reserved.
+ * Copyright 2015 Six. All rights reserved.
  */
 
 @RunWith(AndroidJUnit4.class)

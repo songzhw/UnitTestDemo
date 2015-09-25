@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import cn.six.jump.JumpFromActivity;
-import cn.six.aut.R;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -17,7 +16,6 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
@@ -25,7 +23,7 @@ import static org.hamcrest.Matchers.containsString;
 /**
  * @author hzsongzhengwang
  * @date 2015/5/27
- * Copyright 2015 NetEase. All rights reserved.
+ * Copyright 2015 Six. All rights reserved.
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest

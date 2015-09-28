@@ -9,7 +9,12 @@ import cn.six.list.ItemData;
 
 import static org.hamcrest.Matchers.equalTo;
 
+// This is a util class, so it is not extend any ***Match class.
+// However, it custom the specific way that how to match a ItemData object to a String in our ListView
+// the BounderMatcher#matchesSafely() is the key function!
+
 public class MyAdapterMatcher {
+    // public method, 公开出去， 做为自定义Matcher
     public static Matcher<Object> withName(String expectedText) {
         return withName(equalTo(expectedText));
     }

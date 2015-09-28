@@ -35,7 +35,7 @@ import cn.six.list.ItemData;
 import cn.six.list.LongListActivity;
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/5/27
  * Copyright 2015 Six. All rights reserved.
  */

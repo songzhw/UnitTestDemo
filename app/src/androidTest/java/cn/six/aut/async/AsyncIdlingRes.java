@@ -2,7 +2,7 @@ package cn.six.aut.async;
 
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/6/5
  * Copyright 2015 Six. All rights reserved.
  */

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="20dip">
+
+    <Button
+        android:id="@+id/btn_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="showPopup"
+        android:text="Click here for popup menu!" />
+
+
+    <TextView
+        android:id="@+id/tv_context_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#ccc"
+        android:textSize="22dp"
+        android:text="long-click here for context menu!"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tv_menu_result"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Text is emtpy"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="22dp" />
+
+</LinearLayout>

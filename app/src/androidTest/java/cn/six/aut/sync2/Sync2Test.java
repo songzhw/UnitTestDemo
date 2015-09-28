@@ -22,7 +22,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/9/24
  * Copyright 2015 Six. All rights reserved.
  */

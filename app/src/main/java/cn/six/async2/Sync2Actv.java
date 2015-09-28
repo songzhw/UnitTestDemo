@@ -12,7 +12,7 @@ import java.util.Random;
 import cn.six.aut.R;
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/9/24
  * Copyright 2015 Six. All rights reserved.
  */

@@ -21,7 +21,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/5/27
  * Copyright 2015 Six. All rights reserved.
  */

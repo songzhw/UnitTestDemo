@@ -1,7 +1,7 @@
 package cn.six.aut.multiwindow;
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/5/29
  * Copyright 2015 Six. All rights reserved.
  */

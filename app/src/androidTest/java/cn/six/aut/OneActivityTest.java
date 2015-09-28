@@ -1,7 +1,7 @@
 package cn.six.aut;
 
 /**
- * @author hzsongzhengwang
+ * @author songzhw
  * @date 2015/5/22
  * Copyright 2015 Six. All rights reserved.
  */

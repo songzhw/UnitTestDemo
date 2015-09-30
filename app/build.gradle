@@ -24,6 +24,8 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:support-v4:22.2.0'
+
     // Testing-only dependencies
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'

@@ -1,0 +1,13 @@
+
+1. Web
+
+we need the "com.android.support.test.espresso:espresso-web:2.2.1" package.
+
+Please go to this : https://google.github.io/android-testing-support-library/docs/espresso/web/
+
+
+2. onActivityResult()
+we need the "com.android.support.test.espresso:espresso-intents:2.2.1" package
+
+In the test class, we use IntentsTestRule and ActivityResult, to stub the Intent.
+On the other word, we use a mocked Intent Result to mock the onActivityResult() data

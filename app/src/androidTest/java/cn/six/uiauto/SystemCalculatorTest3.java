@@ -44,7 +44,7 @@ public class SystemCalculatorTest3 {
         // Error : android.support.test.uiautomator.UiObjectNotFoundException: UiSelector[FOCUSED=true]
 //        UiObject result = device.findObject(new UiSelector().focused(true));
 
-        UiObject result = device.findObject(new UiSelector().text("8"));
+        UiObject result = device.findObject(new UiSelector().resourceId("com.android.calculator2:id/result"));
         Assert.assertNotNull(result);
     }
 }

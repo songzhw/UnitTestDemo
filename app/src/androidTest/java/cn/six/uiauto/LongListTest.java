@@ -2,7 +2,6 @@ package cn.six.uiauto;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
@@ -28,12 +27,7 @@ public class LongListTest {
 
     @Test
     public void testList() throws UiObjectNotFoundException {
-        device.pressHome();
-        UiObject apps = device.findObject( new UiSelector().description("Apps"));
-        apps.clickAndWaitForNewWindow();
-        UiObject myApp = device.findObject(new UiSelector().text("AndroidAutoTest"));
-        myApp.clickAndWaitForNewWindow();
-
+        UiAutoUtil.openMyApp(device);
 
         UiScrollable list = new UiScrollable(new UiSelector().resourceId("cn.six.aut:id/lv_list"));
         // public UiObject getChildByText(UiSelector childPattern, String text, boolean allowScrollSearch)
@@ -44,5 +38,6 @@ public class LongListTest {
         Assert.assertEquals("13", top.getText());
 
     }
+
 
 }

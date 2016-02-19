@@ -2,6 +2,7 @@ package cn.six.uiauto;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.uiautomator.Configurator;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
@@ -23,6 +24,12 @@ public class JumpActivitiesTest {
     @Before
     public void setup(){
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+
+        Configurator config = Configurator.getInstance();
+        config.setActionAcknowledgmentTimeout(1000);
+        config.setWaitForSelectorTimeout(1000);
+        config.setWaitForIdleTimeout(1000);
+        config.setKeyInjectionDelay(300);
     }
 
     @Test

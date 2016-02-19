@@ -14,23 +14,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import cn.six.uiauto.core.BlackTest;
+
 /**
  * Created by songzhw on 2016/2/18
  */
 @RunWith(AndroidJUnit4.class)
-public class JumpActivitiesTest {
-    UiDevice device;
-
-    @Before
-    public void setup(){
-        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-
-        Configurator config = Configurator.getInstance();
-        config.setActionAcknowledgmentTimeout(1000);
-        config.setWaitForSelectorTimeout(1000);
-        config.setWaitForIdleTimeout(1000);
-        config.setKeyInjectionDelay(300);
-    }
+public class JumpActivitiesTest extends BlackTest {
 
     @Test
     public void testJump() throws UiObjectNotFoundException {
@@ -45,4 +35,5 @@ public class JumpActivitiesTest {
         UiObject tv2 = device.findObject(new UiSelector().resourceId("cn.six.aut:id/tv_jumpto_display"));
         Assert.assertEquals("Tomorrow", tv2.getText());
     }
+
 }

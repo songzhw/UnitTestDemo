@@ -14,16 +14,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import cn.six.uiauto.core.BlackTest;
+
 /**
  * Created by songzhw on 2016/2/17
  */
 @RunWith(AndroidJUnit4.class)
-public class LongListTest {
-    UiDevice device;
-    @Before
-    public void setup(){
-        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-    }
+public class LongListTest extends BlackTest {
 
     @Test
     public void testList() throws UiObjectNotFoundException {

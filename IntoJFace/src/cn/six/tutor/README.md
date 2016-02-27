@@ -1,8 +1,11 @@
 Targets (which are involved with UI Automator Viewer):
 
-* Composite
+
 * Canvas
+* TableColumnLayout
+
+* ~~TreeViewer~~
+* ~~Composite~~
 * ~~ToolbarManager~~
 * ~~Image~~
-* TreeViewer
-* TableColumnLayout
+

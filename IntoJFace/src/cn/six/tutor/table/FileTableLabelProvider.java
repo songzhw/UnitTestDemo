@@ -1,4 +1,4 @@
-package cn.six.tutor.jtree;
+package cn.six.tutor.table;
 
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ITableLabelProvider;

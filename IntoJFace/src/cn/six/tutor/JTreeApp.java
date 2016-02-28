@@ -1,5 +1,7 @@
-package cn.six.tutor.jtree;
+package cn.six.tutor;
 
+import cn.six.tutor.table.FileTableContentProvider;
+import cn.six.tutor.table.FileTableLabelProvider;
 import cn.six.tutor.tree.FileTreeContentProvider;
 import cn.six.tutor.tree.FileTreeLabelProvider;
 import org.eclipse.jface.viewers.*;
@@ -9,7 +11,6 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 
 import java.io.File;
 
@@ -19,10 +20,12 @@ import java.io.File;
 public class JTreeApp extends ApplicationWindow {
     public JTreeApp() {
         super(null);
+        addStatusLine();
     }
 
     @Override
     protected Control createContents(Composite parent) {
+        getShell().setText("szw Title");
         SashForm sashForm = new SashForm(parent, SWT.HORIZONTAL | SWT.NULL);
 
         TreeViewer tree = new TreeViewer(sashForm);
@@ -30,9 +33,18 @@ public class JTreeApp extends ApplicationWindow {
         tree.setLabelProvider(new FileTreeLabelProvider());
         tree.setInput(new File("E:\\temp"));
 
-        final TableViewer table = new TableViewer(sashForm, SWT.BORDER);
+
+        final TableViewer table = new TableViewer(sashForm, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
         table.setContentProvider(new FileTableContentProvider());
         table.setLabelProvider(new FileTableLabelProvider());
+        table.addSelectionChangedListener(new ISelectionChangedListener() {
+            @Override
+            public void selectionChanged(SelectionChangedEvent event) {
+                IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+                setStatus("szw selected (right) "+selection.size());
+            }
+        });
+
 
         tree.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override

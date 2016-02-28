@@ -1,22 +1,22 @@
 package cn.six.tutor;
 
 import cn.six.tutor.tree.FileTreeContentProvider;
+import cn.six.tutor.tree.FileTreeLabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import sun.applet.Main;
 
 import java.io.File;
 
 /**
  * Created by songzhw on 2016/2/27.
  */
-public class ComplexerApp extends ApplicationWindow {
-    private ComplexerApp self;
+public class Tree03App extends ApplicationWindow {
+    private Tree03App self;
 
-    public ComplexerApp() {
+    public Tree03App() {
         super(null);
         self = this;
     }
@@ -26,11 +26,12 @@ public class ComplexerApp extends ApplicationWindow {
         TreeViewer tree = new TreeViewer(parent);
         tree.setContentProvider(new FileTreeContentProvider());
         tree.setInput(new File("E:\\temp"));
+        tree.setLabelProvider(new FileTreeLabelProvider());
         return tree.getTree();
     }
 
     public static void main(String[] args) {
-        ComplexerApp app = new ComplexerApp();
+        Tree03App app = new Tree03App();
         app.setBlockOnOpen(true);
         app.open();
         Display.getDefault().dispose();

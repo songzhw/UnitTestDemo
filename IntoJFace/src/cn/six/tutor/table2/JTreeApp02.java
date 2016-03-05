@@ -1,9 +1,6 @@
-package cn.six.tutor;
+package cn.six.tutor.table2;
 
-import cn.six.tutor.table.FileTableContentProvider;
-import cn.six.tutor.table.FileTableLabelProvider;
 import cn.six.tutor.tree.FileTreeContentProvider;
-import cn.six.tutor.tree.FileTreeLabelProvider;
 import org.eclipse.jface.viewers.*;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
@@ -18,8 +15,9 @@ import java.io.File;
 /**
  * Created by songzhw on 2016/3/3.
  */
-public class JTree02 extends ApplicationWindow {
-    public JTree02() {
+public class JTreeApp02 extends ApplicationWindow {
+
+    public JTreeApp02() {
         super(null);
         addStatusLine();
     }
@@ -31,13 +29,13 @@ public class JTree02 extends ApplicationWindow {
 
         TreeViewer tree = new TreeViewer(sashForm);
         tree.setContentProvider(new FileTreeContentProvider());
-        tree.setLabelProvider(new FileTreeLabelProvider());
+        tree.setLabelProvider(new FileTreeLabelProvider2());
         tree.setInput(new File("E:\\temp"));
 
 
         final TableViewer table = new TableViewer(sashForm, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
-        table.setContentProvider(new FileTableContentProvider());
-        table.setLabelProvider(new FileTableLabelProvider());
+        table.setContentProvider(new FileTableContentProvider2());
+        table.setLabelProvider(new FileTableLabelProvider2());
         table.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
@@ -71,7 +69,7 @@ public class JTree02 extends ApplicationWindow {
     }
 
     public static void main(String[] args) {
-        JTree02 app = new JTree02();
+        JTreeApp02 app = new JTreeApp02();
         app.setBlockOnOpen(true);
         app.open();
         Display.getCurrent().dispose();

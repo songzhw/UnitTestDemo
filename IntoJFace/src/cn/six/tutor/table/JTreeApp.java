@@ -1,7 +1,5 @@
-package cn.six.tutor;
+package cn.six.tutor.table;
 
-import cn.six.tutor.table.FileTableContentProvider;
-import cn.six.tutor.table.FileTableLabelProvider;
 import cn.six.tutor.tree.FileTreeContentProvider;
 import cn.six.tutor.tree.FileTreeLabelProvider;
 import org.eclipse.jface.viewers.*;

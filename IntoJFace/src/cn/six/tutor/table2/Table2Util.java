@@ -31,4 +31,8 @@ public class Table2Util {
         return imgReg;
     }
 
+    public static ImageDescriptor getImageDesp(String url){
+        return ImageDescriptor.createFromURL(Table2Util.newUrl(url));
+    }
+
 }

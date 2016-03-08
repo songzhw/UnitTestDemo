@@ -9,6 +9,7 @@ import cn.six.tutor.table3.MyDirectoryFilter;
 import cn.six.tutor.table3.MyFileSorter;
 import cn.six.tutor.tree.FileTreeContentProvider;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.*;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
@@ -30,8 +31,8 @@ public class JTreeApp04 extends ApplicationWindow implements ITableSelection{
     public JTreeApp04() {
         super(null);
         addStatusLine();
-
         addMenuBar();
+        addToolBar(SWT.FLAT | SWT.WRAP);
     }
 
     @Override
@@ -42,6 +43,14 @@ public class JTreeApp04 extends ApplicationWindow implements ITableSelection{
         fileMenu.add(new ExitAction(this));
         fileMenu.add(new OpenAction(this));
         return menuMgr;
+    }
+
+    @Override
+    protected ToolBarManager createToolBarManager(int style) {
+        ToolBarManager toolbar = new ToolBarManager(style);
+        toolbar.add(new ExitAction(this));
+        toolbar.add(new OpenAction(this));
+        return toolbar;
     }
 
     @Override
@@ -78,7 +87,6 @@ public class JTreeApp04 extends ApplicationWindow implements ITableSelection{
         this.table.getTable().setHeaderVisible(true);
         this.table.setSorter(new MyFileSorter());
 
-
         tree.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
@@ -87,6 +95,10 @@ public class JTreeApp04 extends ApplicationWindow implements ITableSelection{
                 table.setInput(selectedFile);
             }
         });
+
+        MenuManager tableMenu = new MenuManager();
+        table.getTable().setMenu(tableMenu.createContextMenu(table.getTable()));
+        tableMenu.add(new OpenAction(this));
 
         return sashForm;
 

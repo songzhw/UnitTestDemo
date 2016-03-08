@@ -4,40 +4,29 @@ import com.intalgent.addressbook.domain.Contact;
 import com.intalgent.addressbook.menubar.AboutAction;
 import com.intalgent.addressbook.menubar.ExitAction;
 import com.intalgent.addressbook.menubar.NewContactAction;
-
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.window.ApplicationWindow;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.*;
 
 import java.util.ArrayList;
 
 
-public class AddressBook extends ApplicationWindow
-{
+public class AddressBook extends ApplicationWindow {
     private static ArrayList contactList;
     private static TableViewer tableViewer;
     private Table table;
 
-    public AddressBook()
-    {
+    public AddressBook() {
         super(null);
         this.addMenuBar();
 
         contactList = new ArrayList();
     }
 
-    protected Control createContents(Composite parent)
-    {
+    protected Control createContents(Composite parent) {
         Shell shell = this.getShell();
         shell.setText("Personal Address Book");
         shell.setSize(500, 300);
@@ -71,8 +60,7 @@ public class AddressBook extends ApplicationWindow
         return form;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         AddressBook book = new AddressBook();
 
         book.setBlockOnOpen(true);
@@ -81,8 +69,7 @@ public class AddressBook extends ApplicationWindow
         Display.getCurrent().dispose();
     }
 
-    protected MenuManager createMenuManager()
-    {
+    protected MenuManager createMenuManager() {
         MenuManager bar = new MenuManager("");
 
         MenuManager fileMenu = new MenuManager("&File");
@@ -99,8 +86,7 @@ public class AddressBook extends ApplicationWindow
         return bar;
     }
 
-    public static void addContact(Contact c)
-    {
+    public static void addContact(Contact c) {
         getContactList().add(c);
 
         Table table = tableViewer.getTable();
@@ -112,23 +98,19 @@ public class AddressBook extends ApplicationWindow
         item.setText(3, c.getHomePhone());
     }
 
-    public static ArrayList getContactList()
-    {
+    public static ArrayList getContactList() {
         return contactList;
     }
 
-    public static TableViewer getTbv()
-    {
+    public static TableViewer getTbv() {
         return tableViewer;
     }
 
-    public static void setContactList(ArrayList list)
-    {
+    public static void setContactList(ArrayList list) {
         contactList = list;
     }
 
-    public static void setTbv(TableViewer viewer)
-    {
+    public static void setTbv(TableViewer viewer) {
         tableViewer = viewer;
     }
 }

@@ -2,7 +2,6 @@ package cn.six.tutor.actions;
 
 import cn.six.tutor.table2.Table2Util;
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.ApplicationWindow;
 
 /**

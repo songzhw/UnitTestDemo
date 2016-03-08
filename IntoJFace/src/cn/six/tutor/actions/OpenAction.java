@@ -4,7 +4,6 @@ import cn.six.tutor.table2.Table2Util;
 import cn.six.tutor.table4.ITableSelection;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.program.Program;
 
 import java.io.File;

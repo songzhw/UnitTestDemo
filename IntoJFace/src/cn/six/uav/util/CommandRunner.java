@@ -14,7 +14,7 @@ public class CommandRunner {
 
     private List<String> outputs;
 
-    public void run(List<String> cmds) throws Exception {
+    public int run(List<String> cmds) throws Exception {
         outputs = new ArrayList<>();
         ProcessBuilder procBuilder = new ProcessBuilder(cmds)
                                             .redirectErrorStream(true);
@@ -41,5 +41,6 @@ public class CommandRunner {
             }
         }) .start();
 
+        return proc.waitFor();
     }
 }

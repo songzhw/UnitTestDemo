@@ -2,6 +2,7 @@ package cn.six.uav.action;
 
 import cn.six.tutor.table2.Table2Util;
 import cn.six.uav.MyUav;
+import cn.six.uav.util.CommandRunner;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -11,6 +12,8 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by songzhw on 2016/3/10.
@@ -32,20 +35,26 @@ public class ScreenShotAction extends Action {
     @Override
     public void run() {
         super.run();
-
         try {
+            List<String> cmds = initCmd("adb shell /system/bin/screencap -p /sdcard/tmp1603101608.png");
+            CommandRunner runner = new CommandRunner();
+            runner.run(cmds);
 
-            ProgressMonitorDialog dialog = new ProgressMonitorDialog(app.getShell());
-            dialog.run(true, false, new IRunnableWithProgress() {
-                @Override
-                public void run(IProgressMonitor iProgressMonitor) throws InvocationTargetException, InterruptedException {
-                    System.out.println("sze test... test...");
-                }
-            });
+            cmds.clear();
+            cmds = initCmd("adb pull /sdcard/tmp1603101608.png E:/temp");
+            runner.run(cmds);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    private List<String> initCmd(String cmd){
+        List<String> cmds = new ArrayList<>();
+        String[] result = cmd.split(" ");
+        for(String a : result){
+            cmds.add(a);
+        }
+        return cmds;
     }
 }

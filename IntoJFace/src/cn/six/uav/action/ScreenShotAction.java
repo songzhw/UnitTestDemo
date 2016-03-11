@@ -2,6 +2,7 @@ package cn.six.uav.action;
 
 import cn.six.tutor.table2.Table2Util;
 import cn.six.uav.MyUav;
+import cn.six.uav.UavModel;
 import cn.six.uav.util.CommandRunner;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.Action;
@@ -10,6 +11,9 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -43,6 +47,10 @@ public class ScreenShotAction extends Action {
             cmds.clear();
             cmds = initCmd("adb pull /sdcard/tmp1603101608.png E:/temp");
             runner.run(cmds);
+
+            ImageData[] data = new ImageLoader().load("E:/temp/tmp1603101608.png");
+            UavModel.image = new Image(app.getShell().getDisplay(), data[0]);
+            app.redraw();
 
         } catch (Exception e) {
             e.printStackTrace();

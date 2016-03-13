@@ -94,6 +94,8 @@ public class ScreenshotAction extends Action {
                     monitor.beginTask("Getting UI status dump from device...",
                             IProgressMonitor.UNKNOWN);
                     monitor.subTask("Detecting device...");
+
+                    // To detect a device
                     procRunner = getAdbRunner(serial, "shell", "ls", "/system/bin/uiautomator");
                     try {
                         retCode = procRunner.run(30000);
@@ -112,6 +114,8 @@ public class ScreenshotAction extends Action {
                         showError("/system/bin/uiautomator not found on device", null, monitor);
                         return;
                     }
+
+
                     monitor.subTask("Deleting old UI XML snapshot ...");
                     procRunner = getAdbRunner(serial,
                             "shell", "rm", "/sdcard/uidump.xml");
@@ -128,6 +132,7 @@ public class ScreenshotAction extends Action {
                         return;
                     }
 
+
                     monitor.subTask("Taking UI XML snapshot...");
                     procRunner = getAdbRunner(serial,
                             "shell", "/system/bin/uiautomator", "dump", "/sdcard/uidump.xml");
@@ -142,6 +147,8 @@ public class ScreenshotAction extends Action {
                         showError("Failed to execute dump command.", e, monitor);
                         return;
                     }
+
+
                     procRunner = getAdbRunner(serial,
                             "pull", "/sdcard/uidump.xml", xmlDumpFile.getAbsolutePath());
                     try {
@@ -155,6 +162,7 @@ public class ScreenshotAction extends Action {
                         showError("Failed to pull dump file.", e, monitor);
                         return;
                     }
+
 
                     monitor.subTask("Deleting old device screenshot...");
                     procRunner = getAdbRunner(serial,
@@ -171,6 +179,7 @@ public class ScreenshotAction extends Action {
                         showError("Failed to execute \"rm\" screenshot command.", e, monitor);
                         return;
                     }
+
 
                     monitor.subTask("Taking device screenshot...");
                     procRunner = getAdbRunner(serial,

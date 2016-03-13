@@ -40,17 +40,33 @@ public class ScreenShotAction extends Action {
     public void run() {
         super.run();
         try {
-            List<String> cmds = initCmd("adb shell /system/bin/screencap -p /sdcard/tmp1603101608.png");
+            // 1. screenshot
+            List<String> cmds = initCmd("adb shell /system/bin/screencap -p /sdcard/test.png");
             CommandRunner runner = new CommandRunner();
             runner.run(cmds);
 
+            // 2. get and draw the screenshot
             cmds.clear();
-            cmds = initCmd("adb pull /sdcard/tmp1603101608.png E:/temp");
+            cmds = initCmd("adb pull /sdcard/test.png E:/temp");
             runner.run(cmds);
 
-            ImageData[] data = new ImageLoader().load("E:/temp/tmp1603101608.png");
+            ImageData[] data = new ImageLoader().load("E:/temp/test.png");
             UavModel.image = new Image(app.getShell().getDisplay(), data[0]);
             app.redraw();
+
+            //TODO 3. delete the ol UI XML snapshot(?) (szw: 好像下一次会自动覆盖掉老的， 不用特意删除）
+
+            // 4. Taking UI XML snapshot
+            cmds.clear();
+            cmds = initCmd("adb shell /system/bin/uiautomator dump /sdcard/test.xml");
+            runner.run(cmds);
+
+            // 5. get the UI XMl
+            cmds.clear();
+            cmds = initCmd("adb pull /sdcard/test.xml E:/temp");
+            runner.run(cmds);
+
+
 
         } catch (Exception e) {
             e.printStackTrace();

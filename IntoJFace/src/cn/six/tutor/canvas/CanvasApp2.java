@@ -40,7 +40,6 @@ public class CanvasApp2 extends ApplicationWindow {
 
     @Override
     public boolean close() {
-        System.out.println("szw close()");
         image.dispose();
         return super.close();
     }

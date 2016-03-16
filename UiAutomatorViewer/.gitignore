@@ -16,6 +16,7 @@ gen/
 gradlew
 gradlew.bat
 local.properties
+out/
 
 # Local configuration file (sdk path, etc)
 local.properties

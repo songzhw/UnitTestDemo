@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<hierarchy rotation="0">
+    <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="cn.six.open" content-desc=""
+          checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false"
+          scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1440,2392]">
+        <node index="0" text="" resource-id="" class="android.widget.LinearLayout" package="cn.six.open" content-desc=""
+              checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false"
+              scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1440,2392]">
+            <node index="0" text="" resource-id="android:id/content" class="android.widget.FrameLayout"
+                  package="cn.six.open" content-desc="" checkable="false" checked="false" clickable="false"
+                  enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                  password="false" selected="false" bounds="[0,0][1440,2392]">
+                <node index="0" text="" resource-id="cn.six.open:id/nodeContainer" class="android.widget.RelativeLayout"
+                      package="cn.six.open" content-desc="" checkable="false" checked="false" clickable="false"
+                      enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                      password="false" selected="false" bounds="[0,0][1440,2392]">
+                    <node index="0" text="" resource-id="cn.six.open:id/nodeFlow" class="android.widget.RelativeLayout"
+                          package="cn.six.open" content-desc="" checkable="false" checked="false" clickable="false"
+                          enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                          password="false" selected="false" bounds="[0,0][1440,2392]">
+                        <node index="0" text="" resource-id="" class="android.widget.RelativeLayout"
+                              package="cn.six.open" content-desc="" checkable="false" checked="false" clickable="true"
+                              enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                              password="false" selected="false" bounds="[0,211][1440,421]">
+                            <node index="0" text="" resource-id="cn.six.open:id/list_item_image"
+                                  class="android.widget.ImageView" package="cn.six.open" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[56,253][182,379]"/>
+                            <node index="1" text="Europe" resource-id="cn.six.open:id/list_item_text"
+                                  class="android.widget.TextView" package="cn.six.open" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[238,269][1384,362]"/>
+                        </node>
+                        <node index="1" text="" resource-id="" class="android.widget.RelativeLayout"
+                              package="cn.six.open" content-desc="" checkable="false" checked="false" clickable="true"
+                              enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                              password="false" selected="false" bounds="[0,0][1440,210]">
+                            <node index="0" text="" resource-id="cn.six.open:id/list_item_image"
+                                  class="android.widget.ImageView" package="cn.six.open" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[56,42][182,168]"/>
+                            <node index="1" text="Asia" resource-id="cn.six.open:id/list_item_text"
+                                  class="android.widget.TextView" package="cn.six.open" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[238,58][1384,151]"/>
+                        </node>
+                        <node index="2" text="" resource-id="" class="android.widget.RelativeLayout"
+                              package="cn.six.open" content-desc="" checkable="false" checked="false" clickable="true"
+                              enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                              password="false" selected="false" bounds="[0,422][1440,632]">
+                            <node index="0" text="" resource-id="cn.six.open:id/list_item_image"
+                                  class="android.widget.ImageView" package="cn.six.open" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[56,464][182,590]"/>
+                            <node index="1" text="North America" resource-id="cn.six.open:id/list_item_text"
+                                  class="android.widget.TextView" package="cn.six.open" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[238,480][1384,573]"/>
+                        </node>
+                    </node>
+                </node>
+            </node>
+        </node>
+    </node>
+</hierarchy>

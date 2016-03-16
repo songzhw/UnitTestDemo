@@ -15,6 +15,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,11 +67,19 @@ public class ScreenShotAction extends Action {
             cmds = initCmd("adb pull /sdcard/test.xml E:/temp");
             runner.run(cmds);
 
+            // 6. run
+            initNodes();
+
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void initNodes() {
+        File xml = new File("E:/temp/test.xml");
+
     }
 
     private List<String> initCmd(String cmd){

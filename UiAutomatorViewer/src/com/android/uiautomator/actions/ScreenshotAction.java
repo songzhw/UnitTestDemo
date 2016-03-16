@@ -208,6 +208,8 @@ public class ScreenshotAction extends Action {
                         showError("Failed to pull dump file.", e, monitor);
                         return;
                     }
+
+
                     final File png = screenshotFile, xml = xmlDumpFile;
                     if(png.length() == 0) {
                         showError("Screenshot file size is 0", null, monitor);

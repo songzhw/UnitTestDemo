@@ -14,6 +14,11 @@ public class MathUtil {
         float sx = canvasRect.width * 1.0f / imageRect.width ;
         float sy = canvasRect.height * 1.0f / imageRect.height;
         float scale = Math.min(sx, sy);
+
+        System.out.println("canvasWidth = "+canvasRect.width + " ; canvasHeight = "+canvasRect.height);
+        System.out.println("imageWidth = "+imageRect.width + " ; imageHeight = "+imageRect.height);
+        System.out.println("sx = "+sx + " ; sy = "+sy);
+
         return scale;
     }
 }

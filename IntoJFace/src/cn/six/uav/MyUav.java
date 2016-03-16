@@ -1,18 +1,23 @@
 package cn.six.uav;
 
+import cn.six.tutor.table2.FileTreeLabelProvider2;
+import cn.six.tutor.tree.FileTreeContentProvider;
+import cn.six.tutor.tree.FileTreeLabelProvider;
 import cn.six.uav.action.ScreenShotAction;
 import cn.six.uav.util.MathUtil;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.TreeNode;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.graphics.Transform;
+import org.eclipse.swt.graphics.*;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
+
+import java.io.File;
 
 /**
  * Created by songzhw on 2016/3/10.
@@ -35,7 +40,7 @@ public class MyUav extends ApplicationWindow {
 
     @Override
     protected Point getInitialSize() {
-        return new Point(600, 800);
+        return new Point(700, 800);
     }
 
     @Override
@@ -45,7 +50,16 @@ public class MyUav extends ApplicationWindow {
 
     @Override
     protected Control createContents(Composite parent) {
-        canvas = new Canvas(getShell(), SWT.NONE | SWT.NO_REDRAW_RESIZE);
+        SashForm sashForm = new SashForm(parent, SWT.HORIZONTAL | SWT.NULL);
+        canvas = new Canvas(sashForm, SWT.NONE | SWT.NO_REDRAW_RESIZE);
+
+        // TEST
+        ImageData[] data = new ImageLoader().load("E:/temp/test.png");
+        UavModel.image = new Image(getShell().getDisplay(), data[0]);
+        image = UavModel.image;
+        // TEST
+
+
         canvas.addPaintListener(new PaintListener() {
             @Override
             public void paintControl(PaintEvent e) {
@@ -61,7 +75,13 @@ public class MyUav extends ApplicationWindow {
                 }
             }
         });
-        return canvas;
+
+        TreeViewer tree = new TreeViewer(sashForm);
+        tree.setContentProvider(new FileTreeContentProvider());
+        tree.setLabelProvider(new FileTreeLabelProvider2());
+        tree.setInput(new File("E:/temp"));
+
+        return sashForm;
     }
 
     public void redraw(){

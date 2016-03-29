@@ -89,6 +89,9 @@ public class UiAutomatorModel {
             // "data" is an array, probably used to handle images that has multiple frames
             // i.e. gifs or icons, we just care if it has at least one here
             if (data.length < 1) return false;
+
+
+
             UiHierarchyXmlLoader loader = new UiHierarchyXmlLoader();
             BasicTreeNode rootNode = loader.parseXml(xmlDumpFile
                     .getAbsolutePath());
@@ -97,6 +100,8 @@ public class UiAutomatorModel {
                 return false;
             }
             mNafNodes = loader.getNafNodes();
+
+
             try {
                 // Image is tied to ImageData and a Display, so we only need to create once
                 // per new image

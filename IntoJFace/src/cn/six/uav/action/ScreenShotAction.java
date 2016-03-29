@@ -3,6 +3,8 @@ package cn.six.uav.action;
 import cn.six.tutor.table2.Table2Util;
 import cn.six.uav.MyUav;
 import cn.six.uav.UavModel;
+import cn.six.uav.tree.BasicTreeNode;
+import cn.six.uav.tree.UiHierarchyXmlLoader;
 import cn.six.uav.util.CommandRunner;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.Action;
@@ -14,6 +16,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.graphics.Rectangle;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -53,9 +56,9 @@ public class ScreenShotAction extends Action {
 
             ImageData[] data = new ImageLoader().load("E:/temp/test.png");
             UavModel.image = new Image(app.getShell().getDisplay(), data[0]);
-            app.redraw();
 
-            //TODO 3. delete the ol UI XML snapshot(?) (szw: 好像下一次会自动覆盖掉老的， 不用特意删除）
+
+            // 3. delete the ol UI XML snapshot(?) (szw: 好像下一次会自动覆盖掉老的， 不用特意删除）
 
             // 4. Taking UI XML snapshot
             cmds.clear();
@@ -70,7 +73,7 @@ public class ScreenShotAction extends Action {
             // 6. run
             initNodes();
 
-
+            app.redraw();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,6 +82,11 @@ public class ScreenShotAction extends Action {
 
     private void initNodes() {
         File xml = new File("E:/temp/test.xml");
+        UiHierarchyXmlLoader xmlLoader = new UiHierarchyXmlLoader();
+        BasicTreeNode rootNode = xmlLoader.parseXml(xml.getAbsolutePath());
+        List<Rectangle> nafNodes = xmlLoader.getNafNodes();  // "Not Accessibility Friendly" node
+
+        UavModel.xmlRootNode = rootNode;
 
     }
 

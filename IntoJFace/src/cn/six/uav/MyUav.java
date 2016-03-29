@@ -4,8 +4,11 @@ import cn.six.tutor.table2.FileTreeLabelProvider2;
 import cn.six.tutor.tree.FileTreeContentProvider;
 import cn.six.tutor.tree.FileTreeLabelProvider;
 import cn.six.uav.action.ScreenShotAction;
+import cn.six.uav.tree.BasicTreeNode;
+import cn.six.uav.tree.BasicTreeNodeContentProvider;
 import cn.six.uav.util.MathUtil;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeNode;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.ApplicationWindow;
@@ -25,6 +28,7 @@ import java.io.File;
 public class MyUav extends ApplicationWindow {
     private Image image;
     private Canvas canvas;
+    private TreeViewer tree;
 
     public MyUav() {
         super(null);
@@ -53,10 +57,10 @@ public class MyUav extends ApplicationWindow {
         SashForm sashForm = new SashForm(parent, SWT.HORIZONTAL | SWT.NULL);
         canvas = new Canvas(sashForm, SWT.NONE | SWT.NO_REDRAW_RESIZE);
 
-        // TEST
-        ImageData[] data = new ImageLoader().load("E:/temp/test.png");
-        UavModel.image = new Image(getShell().getDisplay(), data[0]);
-        image = UavModel.image;
+        // TODO TEST
+//        ImageData[] data = new ImageLoader().load("E:/temp/test.png");
+//        UavModel.image = new Image(getShell().getDisplay(), data[0]);
+//        image = UavModel.image;
         // TEST
 
 
@@ -76,10 +80,9 @@ public class MyUav extends ApplicationWindow {
             }
         });
 
-        TreeViewer tree = new TreeViewer(sashForm);
-        tree.setContentProvider(new FileTreeContentProvider());
-        tree.setLabelProvider(new FileTreeLabelProvider2());
-        tree.setInput(new File("E:/temp"));
+        this.tree = new TreeViewer(sashForm);
+        this.tree.setContentProvider(new BasicTreeNodeContentProvider());
+        this.tree.setLabelProvider(new LabelProvider());
 
         return sashForm;
     }
@@ -87,6 +90,12 @@ public class MyUav extends ApplicationWindow {
     public void redraw(){
         image = UavModel.image;
         canvas.redraw();
+
+        if(UavModel.xmlRootNode != null) {
+            BasicTreeNode wrapper = new BasicTreeNode();
+            wrapper.addChild(UavModel.xmlRootNode);
+            this.tree.setInput(wrapper);
+        }
     }
 
     @Override

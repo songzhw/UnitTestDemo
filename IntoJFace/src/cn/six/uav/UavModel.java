@@ -1,5 +1,6 @@
 package cn.six.uav;
 
+import cn.six.uav.tree.BasicTreeNode;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -9,5 +10,6 @@ public class UavModel {
 
     public static Image image;
 
+    public static BasicTreeNode xmlRootNode;
 
 }

@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import ca.six.test.R;
+import ca.six.test.core.Debug;
 import ca.six.test.model.User;
 import ca.six.test.net.HttpEngine;
+import ca.six.test.net.MockApiRepo;
 
 public class GUserActivity extends AppCompatActivity {
     public static boolean isFinishHttp = false;
@@ -30,18 +34,21 @@ public class GUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 isFinishHttp = false;
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            startRequest();
-                        } catch (Exception e) {
-                            System.out.println("szw error : "+e);
-                            e.printStackTrace();
+                if (Debug.isTest) {
+                    refreshUI(new Gson().fromJson(MockApiRepo.API_USER, User.class));
+                } else {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                startRequest();
+                            } catch (Exception e) {
+                                System.out.println("szw error : " + e);
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                }).start();
-
+                    }).start();
+                }
             }
         });
 
@@ -54,16 +61,22 @@ public class GUserActivity extends AppCompatActivity {
                 .getUser("songzhw")
                 .execute()
                 .body();
-        System.out.println("szw get: " +songzhw);
+        System.out.println("szw get: " + songzhw);
 
-        isFinishHttp = true;
+
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                tv.setText(songzhw.name);
+                refreshUI(songzhw);
             }
         });
 
+
+    }
+
+    private void refreshUI(User user) {
+        isFinishHttp = true;
+        tv.setText(user.name);
     }
 
 

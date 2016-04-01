@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.TimeUnit;
 
 import ca.six.test.core.AsyncIdlingRes;
+import ca.six.test.core.Debug;
 import ca.six.test.ui.GUserActivity;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -42,19 +43,23 @@ public class GithubUserTest {
 
     @Test
     public void testUser(){
+        Debug.isTest = true;
+
+
         onView(withId(R.id.fab))
                 .perform(click());
 
+
         // Make sure Espresso does not time out
-        IdlingPolicies.setMasterPolicyTimeout(6, TimeUnit.SECONDS);
-        IdlingPolicies.setIdlingResourceTimeout(10, TimeUnit.SECONDS);
+        IdlingPolicies.setMasterPolicyTimeout(30, TimeUnit.SECONDS);
+        IdlingPolicies.setIdlingResourceTimeout(30, TimeUnit.SECONDS);
 
         IdlingResource idlingResource = new AsyncIdlingRes();
         Espresso.registerIdlingResources(idlingResource);
 
 
         onView(withId(R.id.tv_main))
-                .check(matches(withText("songzhw")));
+                .check(matches(withText("xxl")));
 
         Espresso.unregisterIdlingResources(idlingResource);
 

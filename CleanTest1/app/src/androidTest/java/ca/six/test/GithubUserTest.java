@@ -1,11 +1,10 @@
-package cn.six.aut.async;
+package ca.six.test;
 
 /**
- * @author songzhw
- * @date 2015/6/2
- * Copyright 2015 Six. All rights reserved.
+ * Created by songzhw on 2016/4/1.
  */
 
+import android.app.Activity;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.IdlingResource;
@@ -19,9 +18,8 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.TimeUnit;
 
-
-import cn.six.async.AsyncTaskActivity;
-import cn.six.aut.R;
+import ca.six.test.core.AsyncIdlingRes;
+import ca.six.test.ui.GUserActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -29,17 +27,22 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class AsyncTest {
-
+public class GithubUserTest {
     @Rule
-    public ActivityTestRule<AsyncTaskActivity> actvRule = new ActivityTestRule<AsyncTaskActivity>(AsyncTaskActivity.class);
-
+    public ActivityTestRule<GUserActivity> actvRule = new ActivityTestRule<GUserActivity>(GUserActivity.class);
 
     @Test
-    public void async(){
-        onView(withId(R.id.btn_async_start))
+    public void testFirst(){
+        onView(withId(R.id.tv_main))
+                .check(matches(withText("Hello World!")));
+    }
+
+    @Test
+    public void testUser(){
+        onView(withId(R.id.fab))
                 .perform(click());
 
         // Make sure Espresso does not time out
@@ -50,10 +53,10 @@ public class AsyncTest {
         Espresso.registerIdlingResources(idlingResource);
 
 
-        onView(withId(R.id.tv_async_result))
-                .check(matches(withText("szw ok")));
+        onView(withId(R.id.tv_main))
+                .check(matches(withText("songzhw")));
 
         Espresso.unregisterIdlingResources(idlingResource);
-    }
 
+    }
 }

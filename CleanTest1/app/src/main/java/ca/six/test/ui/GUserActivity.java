@@ -1,4 +1,4 @@
-package ca.six.test;
+package ca.six.test.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ca.six.test.R;
 import ca.six.test.model.User;
 import ca.six.test.net.HttpEngine;
 
-public class MainActivity extends AppCompatActivity {
+public class GUserActivity extends AppCompatActivity {
+    public static boolean isFinishHttp = false;
     private TextView tv;
 
     @Override
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isFinishHttp = false;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 .body();
         System.out.println("szw get: " +songzhw);
 
+        isFinishHttp = true;
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {

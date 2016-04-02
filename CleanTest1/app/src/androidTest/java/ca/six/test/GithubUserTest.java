@@ -4,7 +4,6 @@ package ca.six.test;
  * Created by songzhw on 2016/4/1.
  */
 
-import android.app.Activity;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.IdlingResource;

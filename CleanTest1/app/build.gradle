@@ -34,9 +34,9 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 
     // adds the @Generated annoation that Android lacks
-    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.0'
-    androidTestCompile 'com.google.dexmaker:dexmaker:1.0'
-    androidTestCompile 'org.mockito:mockito-core:2.0.44-beta'
+//    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.0'
+//    androidTestCompile 'com.google.dexmaker:dexmaker:1.0'
+//    androidTestCompile 'org.mockito:mockito-core:2.0.44-beta'
 
 //    androidTestCompile 'com.squareup.retrofit2:retrofit-mock:2.0.1'
 }

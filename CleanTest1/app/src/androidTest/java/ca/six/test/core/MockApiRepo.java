@@ -5,7 +5,7 @@ package ca.six.test.core;
  */
 public class MockApiRepo {
     public static final String API_USER = "{\n" +
-            "name: \"mine3\",\n" +
+            "name: \"testInRetrofit\",\n" +
             "location: \"Toronto, Canada\",\n" +
             "public_repos: 8\n" +
             "}";

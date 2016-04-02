@@ -9,14 +9,18 @@ import android.widget.TextView;
 import ca.six.test.R;
 import ca.six.test.model.User;
 import ca.six.test.net.HttpEngine;
+import ca.six.test.net.IHttpApi;
 
 public class GUserActivity2 extends AppCompatActivity {
     private TextView tv;
+    public IHttpApi httpApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        httpApi = HttpEngine.getHttpApi();
 
         tv = (TextView) findViewById(R.id.tv_main);
 
@@ -37,30 +41,20 @@ public class GUserActivity2 extends AppCompatActivity {
 
     private void startRequest() {
         System.out.println("szw start to http");
-        final User songzhw = getUser();
-        System.out.println("szw get: " + songzhw);
-
-
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                refreshUI(songzhw);
-            }
-        });
-
-
-    }
-
-    public User getUser() {
         try {
-            User songzhw = HttpEngine.getInstance().getHttpApi()
-                    .getUser("songzhw")
+            final User songzhw = httpApi .getUser("songzhw")
                     .execute()
                     .body();
-            return songzhw;
+
+            this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    refreshUI(songzhw);
+                }
+            });
+
         } catch (Exception e) {
         }
-        return null;
     }
 
     public void refreshUI(User user) {

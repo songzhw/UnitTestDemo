@@ -55,7 +55,7 @@ public class GUserActivity extends AppCompatActivity {
 
     private void startRequest() throws Exception {
         System.out.println("szw start to http");
-        final User songzhw = HttpEngine.getInstance().getHttpApi()
+        final User songzhw = HttpEngine.getHttpApi()
                 .getUser("songzhw")
                 .execute()
                 .body();

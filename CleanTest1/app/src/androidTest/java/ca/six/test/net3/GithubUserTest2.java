@@ -1,4 +1,4 @@
-package ca.six.test;
+package ca.six.test.net3;
 
 /**
  * Created by songzhw on 2016/4/1.
@@ -7,6 +7,7 @@ package ca.six.test;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.IdlingResource;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -20,6 +21,7 @@ import org.mockito.Mockito;
 
 import java.util.concurrent.TimeUnit;
 
+import ca.six.test.R;
 import ca.six.test.core.AsyncIdlingRes;
 import ca.six.test.core.Debug;
 import ca.six.test.model.User;
@@ -39,38 +41,23 @@ public class GithubUserTest2 {
     @Rule
     public ActivityTestRule<GUserActivity2> actvRule = new ActivityTestRule<GUserActivity2>(GUserActivity2.class);
 
-    @Test
-    public void testFirst() {
-        onView(withId(R.id.tv_main))
-                .check(matches(withText("Hello World!")));
-    }
 
     @Test
     public void testUser() {
-        Debug.isTest = true;
+//        User mockUser = new Gson().fromJson(MockApiRepo.API_USER, User.class);
+//        GUserActivity2 actv = actvRule.getActivity();
+//        Mockito.when(actv.getUser()).thenReturn(mockUser);
+//        /* Error : inside when() you don't call method on mock but on some other object !!!  */
 
-        User mockUser = new Gson().fromJson(MockApiRepo.API_USER, User.class);
         GUserActivity2 actv = actvRule.getActivity();
-        Mockito.when(actv.getUser()).thenReturn(mockUser);
-        /* Error : inside when() you don't call method on mock but on some other object !!!  */
-
+        actv.httpApi = new MockHttpApis();
 
         onView(withId(R.id.fab))
                 .perform(click());
 
-
-        // Make sure Espresso does not time out
-        IdlingPolicies.setMasterPolicyTimeout(30, TimeUnit.SECONDS);
-        IdlingPolicies.setIdlingResourceTimeout(30, TimeUnit.SECONDS);
-
-        IdlingResource idlingResource = new AsyncIdlingRes();
-        Espresso.registerIdlingResources(idlingResource);
-
-
         onView(withId(R.id.tv_main))
-                .check(matches(withText("test")));
+                .check(matches(withText("testInRetrofit")));
 
-        Espresso.unregisterIdlingResources(idlingResource);
 
     }
 }

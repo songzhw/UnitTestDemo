@@ -4,7 +4,6 @@ package ca.six.test;
  * Created by songzhw on 2016/4/1.
  */
 
-import android.app.Activity;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.espresso.IdlingResource;
@@ -24,8 +23,7 @@ import java.util.concurrent.TimeUnit;
 import ca.six.test.core.AsyncIdlingRes;
 import ca.six.test.core.Debug;
 import ca.six.test.model.User;
-import ca.six.test.net.MockApiRepo;
-import ca.six.test.ui.GUserActivity;
+import ca.six.test.core.MockApiRepo;
 import ca.six.test.ui.GUserActivity2;
 
 import static android.support.test.espresso.Espresso.onView;

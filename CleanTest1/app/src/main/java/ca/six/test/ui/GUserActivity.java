@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -14,7 +13,6 @@ import ca.six.test.R;
 import ca.six.test.core.Debug;
 import ca.six.test.model.User;
 import ca.six.test.net.HttpEngine;
-import ca.six.test.net.MockApiRepo;
 
 public class GUserActivity extends AppCompatActivity {
     public static boolean isFinishHttp = false;
@@ -35,7 +33,7 @@ public class GUserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 isFinishHttp = false;
                 if (Debug.isTest) {
-                    refreshUI(new Gson().fromJson(MockApiRepo.API_USER, User.class));
+                    refreshUI(new Gson().fromJson("{    \"user\": \"mine3\",    \"location\": \"toronto\",    \"public_repos\": 23}", User.class));
                 } else {
                     new Thread(new Runnable() {
                         @Override

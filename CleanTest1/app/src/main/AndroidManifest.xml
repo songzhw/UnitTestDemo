@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.GUserActivity3"
+            android:name=".ui.GUserActivity2"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.GUserActivity2"/>
+        <activity android:name=".ui.GUserActivity3"/>
         <activity android:name=".ui.GUserActivity"/>
     </application>
 

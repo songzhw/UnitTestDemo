@@ -1,6 +1,6 @@
 package ca.six.test.net2;
 
-import ca.six.test.net.MockApiRepo;
+import ca.six.test.core.MockApiRepo;
 
 /**
  * Created by songzhw on 2016/4/2.

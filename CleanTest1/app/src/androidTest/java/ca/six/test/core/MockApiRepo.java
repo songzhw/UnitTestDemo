@@ -1,4 +1,4 @@
-package ca.six.test.net;
+package ca.six.test.core;
 
 /**
  * Created by songzhw on 2016/4/1.

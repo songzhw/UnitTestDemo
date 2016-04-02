@@ -5,7 +5,7 @@ package ca.six.test.net;
  */
 public class MockApiRepo {
     public static final String API_USER = "{\n" +
-            "name: \"test\",\n" +
+            "name: \"mine3\",\n" +
             "location: \"Toronto, Canada\",\n" +
             "public_repos: 8\n" +
             "}";

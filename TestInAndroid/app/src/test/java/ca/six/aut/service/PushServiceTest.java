@@ -13,6 +13,7 @@ import cn.six.aut.BuildConfig;
 import cn.six.service.PushService;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -26,7 +27,7 @@ public class PushServiceTest {
 
     @Before
     public void setUp(){
-        data = new Bundle();
+        data = mock(Bundle.class);
         data.putString("testKey", "robo-ing");
 
         service = Robolectric.setupService(PushService.class);
@@ -38,4 +39,8 @@ public class PushServiceTest {
         assertEquals("23", service.pushID);
     }
 
+    @Test
+    public void testReceivedMessage_Bundle(){
+        verify(data).getString("testKey");
+    }
 }

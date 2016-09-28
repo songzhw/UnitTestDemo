@@ -11,21 +11,25 @@
         tools:overrideLibrary="android.support.test.uiautomator.v18">
         <activity
             android:name="cn.six.async.AsyncTaskActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.six.first.OneActivity"/>
-        <activity android:name="cn.six.jump.JumpFromActivity"/>
-        <activity android:name="cn.six.jump.JumpToActivity"/>
-        <activity android:name="cn.six.multiwindow.SuggestActivity"/>
-        <!--<activity android:name="cn.six.async.AsyncTaskActivity"/>-->
-        <activity android:name="cn.six.multimatched.MultiMatchedActv"/>
-        <activity android:name="cn.six.custom.failhandler.CustomFailHandlerActivity"/>
+        <activity android:name="cn.six.first.OneActivity" />
+        <activity android:name="cn.six.jump.JumpFromActivity" />
+        <activity android:name="cn.six.jump.JumpToActivity" />
+        <activity android:name="cn.six.multiwindow.SuggestActivity" />
+        <!-- <activity android:name="cn.six.async.AsyncTaskActivity"/> -->
+        <activity android:name="cn.six.multimatched.MultiMatchedActv" />
+        <activity android:name="cn.six.custom.failhandler.CustomFailHandlerActivity" />
 
-        <service android:name=".SzwService"/>
+        <service android:name=".SzwService" />
+        <service
+            android:name="cn.six.service.MyIntentService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

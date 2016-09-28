@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 
 public class PushService extends Service {
     public String pushID;
+    public BarManager bar;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -22,5 +23,9 @@ public class PushService extends Service {
         pushID = id;
         String value = data.getString("testKey");
         FooManager.getInstance().receivedMsg(data);
+        if(bar == null){
+            bar = BarManager.getInstance();
+        }
+        bar.receivedMsg(data);
     }
 }

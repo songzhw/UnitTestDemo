@@ -10,6 +10,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import cn.six.aut.BuildConfig;
+import cn.six.service.BarManager;
 import cn.six.service.PushService;
 
 import static junit.framework.Assert.assertEquals;
@@ -31,24 +32,34 @@ public class PushServiceTest {
         data.putString("testKey", "robo-ing");
 
         service = Robolectric.setupService(PushService.class);
-        service.onMessageReceived("23", data);
     }
 
     @Test
     public void testReceivedMessage_ID(){
+        service.onMessageReceived("23", data);
         assertEquals("23", service.pushID);
     }
 
     @Test
     public void testReceivedMessage_Bundle(){
+        service.onMessageReceived("23", data);
         verify(data).getString("testKey");
     }
 
     @Test
     public void testReceivedMessage_Singleton(){
-        // error. Mockito does not support mock the static method
-/*        FooManager mgr = mock(FooManager.class);
-        when(FooManager.getInstance()).thenReturn(mgr);
-        verify(mgr).receivedMsg(data);*/
+        BarManager mgr = mock(BarManager.class);
+        service.bar = mgr;
+        service.onMessageReceived("23", data);
+        verify(service.bar).receivedMsg(data);
+
     }
+
+    /*
+        // error. Mockito does not support mock the static method
+        FooManager mgr = mock(FooManager.class);
+        when(FooManager.getInstance()).thenReturn(mgr);
+        verify(mgr).receivedMsg(data);
+    **/
+
 }

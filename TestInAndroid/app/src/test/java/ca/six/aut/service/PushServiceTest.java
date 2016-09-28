@@ -46,13 +46,15 @@ public class PushServiceTest {
         verify(data).getString("testKey");
     }
 
+    // PowerMock does not support working with Robolectric together
+    // that's why I separate the BarManager from service
+    // so we can make sure the singleton in our way
     @Test
     public void testReceivedMessage_Singleton(){
         BarManager mgr = mock(BarManager.class);
         service.bar = mgr;
         service.onMessageReceived("23", data);
         verify(service.bar).receivedMsg(data);
-
     }
 
     /*

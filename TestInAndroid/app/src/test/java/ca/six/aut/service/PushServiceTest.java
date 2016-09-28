@@ -43,4 +43,12 @@ public class PushServiceTest {
     public void testReceivedMessage_Bundle(){
         verify(data).getString("testKey");
     }
+
+    @Test
+    public void testReceivedMessage_Singleton(){
+        // error. Mockito does not support mock the static method
+/*        FooManager mgr = mock(FooManager.class);
+        when(FooManager.getInstance()).thenReturn(mgr);
+        verify(mgr).receivedMsg(data);*/
+    }
 }

@@ -21,5 +21,6 @@ public class PushService extends Service {
     public void onMessageReceived(String id, Bundle data){
         pushID = id;
         String value = data.getString("testKey");
+        FooManager.getInstance().receivedMsg(data);
     }
 }

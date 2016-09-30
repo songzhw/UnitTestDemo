@@ -36,4 +36,11 @@ public class LifeCycleAndResTest {
         assertEquals("onDestroy", actv.stage);
     }
 
+
+    @Test
+    public void testResources() {
+        Application application = RuntimeEnvironment.application;
+        String appName = application.getString(R.string.app_name);
+        assertEquals("AndroidAutoTest", appName);
+    }
 }

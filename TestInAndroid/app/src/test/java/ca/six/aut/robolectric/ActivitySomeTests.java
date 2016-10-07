@@ -46,4 +46,14 @@ public class ActivitySomeTests {
     assertEquals(2, recreatedActivity.retainedCount.count);
          */
     }
+
+    @Test
+    public void testMenu(){
+/*
+        Menu menu = Shadows.shadowOf(activity).getOptionsMenu();
+
+        MenuItem offlineItem = menu.findItem(R.id.offline);
+        assertThat(offlineItem).hasTitle(activity.getText(R.string.offline_text));
+*/
+    }
 }

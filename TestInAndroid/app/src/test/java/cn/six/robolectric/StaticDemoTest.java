@@ -1,6 +1,8 @@
 package cn.six.robolectric;
 
+import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.exceptions.misusing.MissingMethodInvocationException;
 
 import ca.six.aut.robolectric.BaseRoboTestCase;
 
@@ -15,17 +17,30 @@ public class StaticDemoTest extends BaseRoboTestCase{
 
     @Test
     public void testStatic01() {
-        StaticDemo obj = new StaticDemo();
         int ret = StaticDemo.getNumber();
         assertEquals(1, ret);
     }
 
-    @Test
+
+    @Test(expected = MissingMethodInvocationException.class)
     public void testStatic02() {
         StaticDemo obj = mock(StaticDemo.class);
         when(obj.getNumber()).thenReturn(3); // Fail : MissingMethodInvocationException
+    }
 
-        int ret1 = StaticDemo.getNumber();
-        assertNotEquals(3, ret1);
+    @Test
+    public void testStatic03() {
+        StaticDemoWrapper obj = mock(StaticDemoWrapper.class);
+        when(obj.getNumber()).thenReturn(3);
+
+        int ret = obj.getNumber();
+        assertEquals(3, ret);
+    }
+
+
+    private class StaticDemoWrapper {
+        public int getNumber(){
+            return StaticDemo.getNumber();
+        }
     }
 }

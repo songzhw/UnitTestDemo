@@ -9,8 +9,6 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 /**
@@ -27,12 +25,14 @@ public class HttpDemo extends Activity implements View.OnClickListener {
     private String url2 = "https://publicobject.com/helloworld.txt";
 
     private HttpDemo self;
-    private Button btn;
+    public Button btn;
+    private HttpEngine http;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         self = this;
+        setHttpEngine(new HttpEngine());
 
         btn = new Button(this);
         btn.setText("Http -> ");
@@ -40,9 +40,12 @@ public class HttpDemo extends Activity implements View.OnClickListener {
         setContentView(btn);
     }
 
+    public void setHttpEngine(HttpEngine http){
+        this.http = http;
+    }
+
     @Override
     public void onClick(View v) {
-        HttpEngine http = new HttpEngine();
         http.request(url1, new HttpCallback());
     }
 

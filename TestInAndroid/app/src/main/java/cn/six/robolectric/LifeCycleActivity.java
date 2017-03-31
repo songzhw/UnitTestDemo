@@ -13,6 +13,12 @@ public class LifeCycleActivity extends Activity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        stage = "onStart";
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         stage = "onResume";

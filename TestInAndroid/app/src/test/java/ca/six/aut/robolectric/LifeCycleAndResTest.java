@@ -26,8 +26,10 @@ public class LifeCycleAndResTest {
             Robolectric.buildActivity(LifeCycleActivity.class).create();
         LifeCycleActivity actv = actvController.get();
 
-        actvController.start();
         assertEquals("onCreate", actv.stage);
+
+        actvController.start();
+        assertEquals("onStart", actv.stage);
 
         actvController.resume();
         assertEquals("onResume", actv.stage);

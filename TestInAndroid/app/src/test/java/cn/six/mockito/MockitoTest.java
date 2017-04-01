@@ -72,6 +72,20 @@ public class MockitoTest {
 //        System.out.println("(B3) = "+list.toArray().length);//=>NPE crash (加了deep_stubs这里也会NPE)
     }
 
+    @Test
+    public void customAnswer(){
+        List mockList = mock(List.class);
+        //使用Answer来生成我们我们期望的返回
+        when(mockList.get(anyInt())).thenAnswer(new Answer<Object>() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                Object[] args = invocation.getArguments();
+                return "hello world:"+args[0];
+            }
+        });
+        assertEquals("hello world:0",mockList.get(0));
+        assertEquals("hello world:999",mockList.get(999));
+    }
 
 
 }

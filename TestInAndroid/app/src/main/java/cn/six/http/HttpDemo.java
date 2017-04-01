@@ -21,7 +21,7 @@ import okhttp3.Response;
  */
 
 public class HttpDemo extends Activity implements View.OnClickListener {
-    private String url1 = "https://api.github.com/users/songzhw";
+    public static String url1 = "https://api.github.com/users/songzhw";
     private String url2 = "https://publicobject.com/helloworld.txt";
 
     private HttpDemo self;

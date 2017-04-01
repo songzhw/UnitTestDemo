@@ -43,5 +43,4 @@ public class ConfigDemoTest {
         assertEquals(0, actv2.lost); //因为onSaveInstanceState()里没有存lost的值，所以这里应该仍为0
         assertEquals(2, actv2.retain);
     }
-
 }

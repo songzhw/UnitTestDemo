@@ -21,6 +21,7 @@ import okhttp3.mockwebserver.MockResponse;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -45,7 +46,7 @@ public class HttpDemoTest extends BaseRoboTestCase {
         actv.setHttpEngine(http);
         actv.btn.performClick();
 
-        verify(http).request(HttpDemo.url1, captor.capture());
+        verify(http).request(eq(HttpDemo.url1), captor.capture());
 
         // okhttp3.Request is a "final" class. Cannot be mocked
         // okhttp3.Response is a "final" class. Cannot be mocked

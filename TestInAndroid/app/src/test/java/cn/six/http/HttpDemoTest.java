@@ -45,7 +45,7 @@ public class HttpDemoTest extends BaseRoboTestCase {
         actv.setHttpEngine(http);
         actv.btn.performClick();
 
-        verify(http).request(anyString(), captor.capture());
+        verify(http).request(HttpDemo.url1, captor.capture());
 
         // okhttp3.Request is a "final" class. Cannot be mocked
         // okhttp3.Response is a "final" class. Cannot be mocked

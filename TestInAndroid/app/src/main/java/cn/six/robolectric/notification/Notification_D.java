@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import cn.six.sup.R;
+import cn.six.aut.R;
 
 
 public class Notification_D extends Activity {

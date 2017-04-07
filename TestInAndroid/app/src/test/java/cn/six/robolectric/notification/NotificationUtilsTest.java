@@ -1,5 +1,6 @@
 package cn.six.robolectric.notification;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 
@@ -29,4 +30,18 @@ public class NotificationUtilsTest extends BaseRoboTestCase {
         utils.showNotification(app);
         assertEquals(shadow.size(), 1);
     }
+
+    @Test
+    public void call_actionAllSend(){
+        Notification notification = getNotification();
+        assertEquals(notification.actions.length, 3);
+    }
+
+    private Notification getNotification() {NotificationUtils utils = new NotificationUtils();
+        utils.showNotification(app);
+        return shadow.getAllNotifications().get(0);
+    }
+
+
+
 }

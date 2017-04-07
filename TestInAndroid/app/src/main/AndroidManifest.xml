@@ -28,6 +28,12 @@
         <activity android:name="cn.six.multimatched.MultiMatchedActv" />
         <activity android:name="cn.six.custom.failhandler.CustomFailHandlerActivity" />
 
+        <activity android:name="cn.six.robolectric.notification.Notification_A"/>
+        <activity android:name="cn.six.robolectric.notification.Notification_B"/>
+        <activity android:name="cn.six.robolectric.notification.Notification_C"/>
+        <activity android:name="cn.six.robolectric.notification.Notification_D"/>
+        <activity android:name="cn.six.robolectric.notification.Notification_E"/>
+
         <service android:name=".SzwService" />
         <service
             android:name="cn.six.service.MyIntentService"

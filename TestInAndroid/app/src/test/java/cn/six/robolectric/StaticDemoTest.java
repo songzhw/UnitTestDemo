@@ -1,10 +1,7 @@
 package cn.six.robolectric;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.exceptions.misusing.MissingMethodInvocationException;
-
-import ca.six.aut.robolectric.BaseRoboTestCase;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;

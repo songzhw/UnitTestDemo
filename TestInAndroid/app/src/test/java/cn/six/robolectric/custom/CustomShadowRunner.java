@@ -1,11 +1,9 @@
-package ca.six.aut.robolectric.custom;
+package cn.six.robolectric.custom;
 
 import org.junit.runners.model.InitializationError;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.internal.bytecode.InstrumentationConfiguration;
-
-import cn.six.robolectric.custom.Person;
 
 public class CustomShadowRunner extends RobolectricTestRunner {
 

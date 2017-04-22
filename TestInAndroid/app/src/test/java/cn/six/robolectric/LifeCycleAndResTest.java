@@ -1,4 +1,4 @@
-package ca.six.aut.robolectric;
+package cn.six.robolectric;
 
 import android.app.Application;
 
@@ -12,7 +12,6 @@ import org.robolectric.util.ActivityController;
 
 import cn.six.aut.BuildConfig;
 import cn.six.aut.R;
-import cn.six.robolectric.LifeCycleActivity;
 
 import static junit.framework.Assert.assertEquals;
 

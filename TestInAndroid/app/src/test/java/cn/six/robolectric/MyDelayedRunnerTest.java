@@ -1,14 +1,12 @@
-package ca.six.aut.robolectric;
+package cn.six.robolectric;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLooper;
 
 import cn.six.aut.BuildConfig;
-import cn.six.robolectric.MyDelayedRunner;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;

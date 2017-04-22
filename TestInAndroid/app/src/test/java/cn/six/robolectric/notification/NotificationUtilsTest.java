@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.robolectric.shadows.ShadowNotificationManager;
 
-import ca.six.aut.robolectric.BaseRoboTestCase;
+import cn.six.robolectric.BaseRoboTestCase;
 import static junit.framework.Assert.assertEquals;
 import static org.robolectric.Shadows.shadowOf;
 

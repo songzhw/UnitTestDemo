@@ -1,4 +1,4 @@
-package ca.six.aut;
+package cn.six;
 
 import android.content.Intent;
 import android.widget.TextView;

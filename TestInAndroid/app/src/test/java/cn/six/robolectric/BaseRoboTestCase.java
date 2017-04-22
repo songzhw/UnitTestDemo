@@ -1,4 +1,4 @@
-package ca.six.aut.robolectric;
+package cn.six.robolectric;
 
 import android.content.Context;
 import android.os.Build;

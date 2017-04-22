@@ -1,4 +1,4 @@
-package ca.six.aut.robolectric;
+package cn.six.robolectric;
 
 import org.junit.Before;
 import org.robolectric.shadows.ShadowLog;

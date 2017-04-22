@@ -1,4 +1,4 @@
-package ca.six.aut.robolectric.custom;
+package cn.six.robolectric.custom;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,7 +6,6 @@ import org.robolectric.annotation.Config;
 import org.robolectric.internal.ShadowExtractor;
 
 import cn.six.aut.BuildConfig;
-import cn.six.robolectric.custom.Person;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

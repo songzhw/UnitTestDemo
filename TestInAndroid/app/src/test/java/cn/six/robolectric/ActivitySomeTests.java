@@ -1,4 +1,4 @@
-package ca.six.aut.robolectric;
+package cn.six.robolectric;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

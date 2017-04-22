@@ -1,4 +1,4 @@
-package ca.six.aut.service;
+package cn.six.service;
 
 import android.os.Bundle;
 
@@ -10,8 +10,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import cn.six.aut.BuildConfig;
-import cn.six.service.BarManager;
-import cn.six.service.PushService;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.mock;

@@ -1,9 +1,7 @@
-package ca.six.aut.robolectric.custom;
+package cn.six.robolectric.custom;
 
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
-
-import cn.six.robolectric.custom.Person;
 
 
 @Implements(Person.class)

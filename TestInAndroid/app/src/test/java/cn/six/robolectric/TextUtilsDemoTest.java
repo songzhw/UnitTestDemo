@@ -2,8 +2,6 @@ package cn.six.robolectric;
 
 import org.junit.Test;
 
-import ca.six.aut.robolectric.BaseRoboTestCase;
-
 import static org.junit.Assert.*;
 
 /**

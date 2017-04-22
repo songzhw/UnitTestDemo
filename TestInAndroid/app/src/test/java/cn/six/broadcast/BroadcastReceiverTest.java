@@ -1,4 +1,4 @@
-package ca.six.aut.broadcast;
+package cn.six.broadcast;
 
 import android.content.Intent;
 import android.content.IntentFilter;

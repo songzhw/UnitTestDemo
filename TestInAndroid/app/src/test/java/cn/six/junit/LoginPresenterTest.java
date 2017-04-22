@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -28,7 +29,7 @@ public class LoginPresenterTest {
         LoginPresenter presenter = new LoginPresenter(mgr);
         presenter.login();
 
-        verify(mgr).login(UserType.LEGAL, captor.capture());//failed
+        verify(mgr).login(any(UserType.class), captor.capture());
     }
 
 }

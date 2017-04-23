@@ -8,6 +8,6 @@ public class SelectItemPresenter {
     }
 
     public int[] threeTimes() {
-        return new int[1];
+        return new int[]{1};
     }
 }

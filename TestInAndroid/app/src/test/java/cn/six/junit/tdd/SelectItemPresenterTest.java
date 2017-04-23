@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class SelectItemPresenterTest {
 
     @Test
-    public void testEven(){
+    public void testThreeTimes(){
         SelectItemPresenter p = new SelectItemPresenter();
         int[] ret = p.threeTimes();
         for(int i : ret){

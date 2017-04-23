@@ -25,7 +25,7 @@ public class SelectItemPresenter {
                 index++;
             }
         }
-        selected = Arrays.copyOf(ret, ret.length);
+        selected = Arrays.copyOf(ret, index);
         return ret;
     }
 
@@ -38,7 +38,7 @@ public class SelectItemPresenter {
                 index++;
             }
         }
-        selected = Arrays.copyOf(ret, ret.length);
+        selected = Arrays.copyOf(ret, index);
         return ret;
     }
 

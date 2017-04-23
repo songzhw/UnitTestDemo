@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class SelectItemPresenter {
     private int[] data;
+    private int index;
 
     public int[] getSelected() {
         return selected;
@@ -17,23 +18,20 @@ public class SelectItemPresenter {
     }
 
     public int[] threeTimes() {
-        int[] ret = new int[selected.length];
-        int index = 0;
-        for (int i : selected) {
-            if (i % 3 == 0) {
-                ret[index] = i;
-                index++;
-            }
-        }
-        selected = Arrays.copyOf(ret, index);
+        int[] ret = mapBase(selected, 3);
         return ret;
     }
 
     public int[] fiveTimes() {
-        int[] ret = new int[selected.length];
-        int index = 0;
-        for (int i : selected) {
-            if (i % 5 == 0) {
+        int[] ret = mapBase(selected, 5);
+        return ret;
+    }
+
+    private int[] mapBase(int[] src, int base){
+        int[] ret = new int[src.length];
+        index = 0;
+        for (int i : src) {
+            if (i % base == 0) {
                 ret[index] = i;
                 index++;
             }
@@ -41,8 +39,10 @@ public class SelectItemPresenter {
         selected = Arrays.copyOf(ret, index);
         return ret;
     }
-
-    private void deepCopy(){
-
-    }
 }
+
+
+
+
+
+

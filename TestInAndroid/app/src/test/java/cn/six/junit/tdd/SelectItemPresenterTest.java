@@ -16,7 +16,7 @@ public class SelectItemPresenterTest {
             assertTrue( i % 3 == 0);
         }
 
-        assertEquals(p.getSelected().length, 4);
+        assertEquals(4, p.getSelected().length);
     }
 
     @Test
@@ -28,8 +28,8 @@ public class SelectItemPresenterTest {
             assertTrue( i % 3 == 0);
             assertTrue( i % 5 == 0);
         }
-        assertEquals(p.getSelected()[0], 15);
-        assertEquals(p.getSelected().length, 1);
+        assertEquals(15, p.getSelected()[0]);
+        assertEquals(1, p.getSelected().length);
     }
 
 }

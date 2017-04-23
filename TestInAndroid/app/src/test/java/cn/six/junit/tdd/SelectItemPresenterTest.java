@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 
 public class SelectItemPresenterTest {
 
+     // {1, 3, 5, 7, 9, 11, 12, 13, 15, 17, 19, 20};
+
     @Test
     public void testThreeTimes(){
         SelectItemPresenter p = new SelectItemPresenter();
@@ -13,6 +15,7 @@ public class SelectItemPresenterTest {
         for(int i : ret){
             assertTrue( i % 3 == 0);
         }
+
     }
 
     @Test

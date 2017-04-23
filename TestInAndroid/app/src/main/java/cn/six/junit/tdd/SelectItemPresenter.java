@@ -18,4 +18,8 @@ public class SelectItemPresenter {
         }
         return ret;
     }
+
+    public int[] fiveTimes() {
+        return new int[]{3};
+    }
 }

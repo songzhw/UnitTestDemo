@@ -15,4 +15,15 @@ public class SelectItemPresenterTest {
         }
     }
 
+    @Test
+    public void testThreeFiveTimes(){
+        SelectItemPresenter p = new SelectItemPresenter();
+        int[] tmp = p.threeTimes();
+        int[] ret = p.fiveTimes();
+        for(int i : ret){
+            assertTrue( i % 3 == 0);
+            assertTrue( i % 5 == 0);
+        }
+    }
+
 }

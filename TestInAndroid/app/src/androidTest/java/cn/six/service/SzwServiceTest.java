@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.util.concurrent.TimeoutException;
 
-import cn.six.aut.SzwService;
+import cn.six.espresso.aut.SzwService;
 
 import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.is;

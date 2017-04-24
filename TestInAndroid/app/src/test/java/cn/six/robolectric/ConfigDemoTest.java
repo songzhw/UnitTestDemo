@@ -6,12 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
-import cn.six.aut.BuildConfig;
-import cn.six.aut.R;
+import cn.six.espresso.aut.BuildConfig;
+import cn.six.espresso.aut.R;
 
 import static org.junit.Assert.*;
 

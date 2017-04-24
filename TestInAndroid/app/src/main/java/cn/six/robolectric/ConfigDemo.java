@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import cn.six.aut.R;
+import cn.six.espresso.aut.R;
 
 /**
  * Created by songzhw on 2017-03-30

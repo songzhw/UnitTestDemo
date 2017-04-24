@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import cn.six.aut.BuildConfig;
+import cn.six.espresso.aut.BuildConfig;
 
 /**
  * Created by songzhw on 2016-10-06

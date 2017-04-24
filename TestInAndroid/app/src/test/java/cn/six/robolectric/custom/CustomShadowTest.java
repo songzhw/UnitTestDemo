@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.annotation.Config;
 import org.robolectric.internal.ShadowExtractor;
 
-import cn.six.aut.BuildConfig;
+import cn.six.espresso.aut.BuildConfig;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

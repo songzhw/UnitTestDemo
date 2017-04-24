@@ -6,15 +6,13 @@ import android.widget.TextView;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import cn.six.aut.BuildConfig;
-import cn.six.aut.R;
-import cn.six.jump.JumpToActivity;
+import cn.six.espresso.aut.BuildConfig;
+import cn.six.espresso.aut.R;
+import cn.six.espresso.jump.JumpToActivity;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;

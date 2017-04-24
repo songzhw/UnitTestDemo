@@ -11,7 +11,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
-import cn.six.aut.BuildConfig;
+import cn.six.espresso.aut.BuildConfig;
 import cn.six.robolectric.DemoReceiver;
 
 import static junit.framework.Assert.assertEquals;

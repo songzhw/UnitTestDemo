@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.six.aut">
+    package="cn.six.espresso.aut">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -20,13 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.six.first.OneActivity" />
-        <activity android:name="cn.six.jump.JumpFromActivity" />
-        <activity android:name="cn.six.jump.JumpToActivity" />
-        <activity android:name="cn.six.multiwindow.SuggestActivity" />
+        <activity android:name="cn.six.espresso.first.OneActivity" />
+        <activity android:name="cn.six.espresso.jump.JumpFromActivity" />
+        <activity android:name="cn.six.espresso.jump.JumpToActivity" />
+        <activity android:name="cn.six.espresso.multiwindow.SuggestActivity" />
         <!-- <activity android:name="cn.six.async.AsyncTaskActivity"/> -->
-        <activity android:name="cn.six.multimatched.MultiMatchedActv" />
-        <activity android:name="cn.six.custom.failhandler.CustomFailHandlerActivity" />
+        <activity android:name="cn.six.espresso.multimatched.MultiMatchedActv" />
+        <activity android:name="cn.six.espresso.failhandler.CustomFailHandlerActivity" />
 
         <activity android:name="cn.six.robolectric.notification.Notification_A"/>
         <activity android:name="cn.six.robolectric.notification.Notification_B"/>

@@ -1,7 +1,6 @@
 package cn.six;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,13 +13,10 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
-import java.util.List;
-import java.util.Set;
-
-import cn.six.aut.BuildConfig;
-import cn.six.aut.R;
-import cn.six.jump.JumpFromActivity;
-import cn.six.jump.JumpToActivity;
+import cn.six.espresso.aut.BuildConfig;
+import cn.six.espresso.aut.R;
+import cn.six.espresso.jump.JumpFromActivity;
+import cn.six.espresso.jump.JumpToActivity;
 
 import static junit.framework.Assert.assertEquals;
 

@@ -1,13 +1,12 @@
 package cn.six.robolectric.notification;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import cn.six.aut.R;
+import cn.six.espresso.aut.R;
 
 
 public class Notification_D extends Activity {

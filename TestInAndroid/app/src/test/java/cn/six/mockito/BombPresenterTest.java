@@ -9,12 +9,15 @@ import static org.mockito.Mockito.verify;
 
 public class BombPresenterTest {
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = BombCallBarException.class)
     public void foo() throws Exception {
         BombPresenter presenter = spy(new BombPresenter());
-        doThrow(new IllegalArgumentException())
+        doThrow(new BombCallBarException())
                 .when(presenter).bar();
         presenter.foo(true);
     }
 
+}
+
+class BombCallBarException extends RuntimeException{
 }

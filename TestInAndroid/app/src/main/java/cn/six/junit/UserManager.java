@@ -5,7 +5,14 @@ public class UserManager {
         return false;
     }
 
-    public void login(UserType userType, LoginCallback callback){
-        callback.onSucc();
+    public void login(UserType userType, final LoginCallback callback){
+        new Thread(){
+            @Override
+            public void run() {
+                callback.onSucc();
+            }
+        }.start();
+
+
     }
 }

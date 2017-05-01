@@ -45,20 +45,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Main UI for the task detail screen.
  */
 public class TaskDetailFragment extends Fragment implements TaskDetailContract.View {
-
-    @NonNull
     private static final String ARGUMENT_TASK_ID = "TASK_ID";
-
-    @NonNull
     private static final int REQUEST_EDIT_TASK = 1;
 
-    private TaskDetailContract.Presenter mPresenter;
+    private TaskDetailContract.Presenter presenter;
 
-    private TextView mDetailTitle;
-
-    private TextView mDetailDescription;
-
-    private CheckBox mDetailCompleteStatus;
+    private TextView tvDetailTitle, tvDetailDescription;
+    private CheckBox cbDetailCompleteStatus;
 
     public static TaskDetailFragment newInstance(@Nullable String taskId) {
         Bundle arguments = new Bundle();
@@ -71,7 +64,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+        presenter.start();
     }
 
     @Nullable
@@ -80,9 +73,9 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.taskdetail_frag, container, false);
         setHasOptionsMenu(true);
-        mDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
-        mDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
-        mDetailCompleteStatus = (CheckBox) root.findViewById(R.id.task_detail_complete);
+        tvDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
+        tvDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
+        cbDetailCompleteStatus = (CheckBox) root.findViewById(R.id.task_detail_complete);
 
         // Set up floating action button
         FloatingActionButton fab =
@@ -91,7 +84,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.editTask();
+                presenter.editTask();
             }
         });
 
@@ -100,14 +93,14 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
 
     @Override
     public void setPresenter(@NonNull TaskDetailContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_delete:
-                mPresenter.deleteTask();
+                presenter.deleteTask();
                 return true;
         }
         return false;
@@ -121,40 +114,40 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     @Override
     public void setLoadingIndicator(boolean active) {
         if (active) {
-            mDetailTitle.setText("");
-            mDetailDescription.setText(getString(R.string.loading));
+            tvDetailTitle.setText("");
+            tvDetailDescription.setText(getString(R.string.loading));
         }
     }
 
     @Override
     public void hideDescription() {
-        mDetailDescription.setVisibility(View.GONE);
+        tvDetailDescription.setVisibility(View.GONE);
     }
 
     @Override
     public void hideTitle() {
-        mDetailTitle.setVisibility(View.GONE);
+        tvDetailTitle.setVisibility(View.GONE);
     }
 
     @Override
     public void showDescription(@NonNull String description) {
-        mDetailDescription.setVisibility(View.VISIBLE);
-        mDetailDescription.setText(description);
+        tvDetailDescription.setVisibility(View.VISIBLE);
+        tvDetailDescription.setText(description);
     }
 
     @Override
     public void showCompletionStatus(final boolean complete) {
-        Preconditions.checkNotNull(mDetailCompleteStatus);
+        Preconditions.checkNotNull(cbDetailCompleteStatus);
 
-        mDetailCompleteStatus.setChecked(complete);
-        mDetailCompleteStatus.setOnCheckedChangeListener(
+        cbDetailCompleteStatus.setChecked(complete);
+        cbDetailCompleteStatus.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked) {
-                            mPresenter.completeTask();
+                            presenter.completeTask();
                         } else {
-                            mPresenter.activateTask();
+                            presenter.activateTask();
                         }
                     }
                 });
@@ -195,14 +188,14 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
 
     @Override
     public void showTitle(@NonNull String title) {
-        mDetailTitle.setVisibility(View.VISIBLE);
-        mDetailTitle.setText(title);
+        tvDetailTitle.setVisibility(View.VISIBLE);
+        tvDetailTitle.setText(title);
     }
 
     @Override
     public void showMissingTask() {
-        mDetailTitle.setText("");
-        mDetailDescription.setText(getString(R.string.no_data));
+        tvDetailTitle.setText("");
+        tvDetailDescription.setText(getString(R.string.no_data));
     }
 
     @Override

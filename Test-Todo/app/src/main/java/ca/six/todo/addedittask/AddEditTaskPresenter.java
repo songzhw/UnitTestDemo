@@ -32,15 +32,15 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         TasksDataSource.GetTaskCallback {
 
     @NonNull
-    private final TasksDataSource mTasksRepository;
+    private final TasksDataSource tasksRepository;
 
     @NonNull
-    private final AddEditTaskContract.View mAddTaskView;
+    private final AddEditTaskContract.View addTaskView;
 
     @Nullable
-    private String mTaskId;
+    private String taskId;
 
-    private boolean mIsDataMissing;
+    private boolean isDataMissing;
 
     /**
      * Creates a presenter for the add/edit view.
@@ -52,17 +52,17 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
      */
     public AddEditTaskPresenter(@Nullable String taskId, @NonNull TasksDataSource tasksRepository,
             @NonNull AddEditTaskContract.View addTaskView, boolean shouldLoadDataFromRepo) {
-        mTaskId = taskId;
-        mTasksRepository = checkNotNull(tasksRepository);
-        mAddTaskView = checkNotNull(addTaskView);
-        mIsDataMissing = shouldLoadDataFromRepo;
+        this.taskId = taskId;
+        this.tasksRepository = checkNotNull(tasksRepository);
+        this.addTaskView = checkNotNull(addTaskView);
+        isDataMissing = shouldLoadDataFromRepo;
 
-        mAddTaskView.setPresenter(this);
+        this.addTaskView.setPresenter(this);
     }
 
     @Override
     public void start() {
-        if (!isNewTask() && mIsDataMissing) {
+        if (!isNewTask() && isDataMissing) {
             populateTask();
         }
     }
@@ -81,43 +81,43 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         if (isNewTask()) {
             throw new RuntimeException("populateTask() was called but task is new.");
         }
-        mTasksRepository.getTask(mTaskId, this);
+        tasksRepository.getTask(taskId, this);
     }
 
     @Override
     public void onTaskLoaded(Task task) {
         // The view may not be able to handle UI updates anymore
-        if (mAddTaskView.isActive()) {
-            mAddTaskView.setTitle(task.getTitle());
-            mAddTaskView.setDescription(task.getDescription());
+        if (addTaskView.isActive()) {
+            addTaskView.setTitle(task.getTitle());
+            addTaskView.setDescription(task.getDescription());
         }
-        mIsDataMissing = false;
+        isDataMissing = false;
     }
 
     @Override
     public void onDataNotAvailable() {
         // The view may not be able to handle UI updates anymore
-        if (mAddTaskView.isActive()) {
-            mAddTaskView.showEmptyTaskError();
+        if (addTaskView.isActive()) {
+            addTaskView.showEmptyTaskError();
         }
     }
 
     @Override
     public boolean isDataMissing() {
-        return mIsDataMissing;
+        return isDataMissing;
     }
 
     private boolean isNewTask() {
-        return mTaskId == null;
+        return taskId == null;
     }
 
     private void createTask(String title, String description) {
         Task newTask = new Task(title, description);
         if (newTask.isEmpty()) {
-            mAddTaskView.showEmptyTaskError();
+            addTaskView.showEmptyTaskError();
         } else {
-            mTasksRepository.saveTask(newTask);
-            mAddTaskView.showTasksList();
+            tasksRepository.saveTask(newTask);
+            addTaskView.showTasksList();
         }
     }
 
@@ -125,7 +125,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         if (isNewTask()) {
             throw new RuntimeException("updateTask() was called but task is new.");
         }
-        mTasksRepository.saveTask(new Task(title, description, mTaskId));
-        mAddTaskView.showTasksList(); // After an edit, go back to the list.
+        tasksRepository.saveTask(new Task(title, description, taskId));
+        addTaskView.showTasksList(); // After an edit, go back to the list.
     }
 }

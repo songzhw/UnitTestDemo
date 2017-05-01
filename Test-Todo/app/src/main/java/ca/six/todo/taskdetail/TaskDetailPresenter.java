@@ -32,9 +32,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class TaskDetailPresenter implements TaskDetailContract.Presenter {
 
-    private final TasksRepository mTasksRepository;
+    private final TasksRepository tasksRepository;
 
-    private final TaskDetailContract.View mTaskDetailView;
+    private final TaskDetailContract.View taskDetailView;
 
     @Nullable
     private String mTaskId;
@@ -43,10 +43,10 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
                                @NonNull TasksRepository tasksRepository,
                                @NonNull TaskDetailContract.View taskDetailView) {
         mTaskId = taskId;
-        mTasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null!");
-        mTaskDetailView = checkNotNull(taskDetailView, "taskDetailView cannot be null!");
+        this.tasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null!");
+        this.taskDetailView = checkNotNull(taskDetailView, "taskDetailView cannot be null!");
 
-        mTaskDetailView.setPresenter(this);
+        this.taskDetailView.setPresenter(this);
     }
 
     @Override
@@ -56,21 +56,21 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
 
     private void openTask() {
         if (Strings.isNullOrEmpty(mTaskId)) {
-            mTaskDetailView.showMissingTask();
+            taskDetailView.showMissingTask();
             return;
         }
 
-        mTaskDetailView.setLoadingIndicator(true);
-        mTasksRepository.getTask(mTaskId, new TasksDataSource.GetTaskCallback() {
+       taskDetailView.setLoadingIndicator(true);
+        tasksRepository.getTask(mTaskId, new TasksDataSource.GetTaskCallback() {
             @Override
             public void onTaskLoaded(Task task) {
                 // The view may not be able to handle UI updates anymore
-                if (!mTaskDetailView.isActive()) {
+                if (!taskDetailView.isActive()) {
                     return;
                 }
-                mTaskDetailView.setLoadingIndicator(false);
+                taskDetailView.setLoadingIndicator(false);
                 if (null == task) {
-                    mTaskDetailView.showMissingTask();
+                    taskDetailView.showMissingTask();
                 } else {
                     showTask(task);
                 }
@@ -79,10 +79,10 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
             @Override
             public void onDataNotAvailable() {
                 // The view may not be able to handle UI updates anymore
-                if (!mTaskDetailView.isActive()) {
+                if (!taskDetailView.isActive()) {
                     return;
                 }
-                mTaskDetailView.showMissingTask();
+                taskDetailView.showMissingTask();
             }
         });
     }
@@ -90,40 +90,40 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
     @Override
     public void editTask() {
         if (Strings.isNullOrEmpty(mTaskId)) {
-            mTaskDetailView.showMissingTask();
+            taskDetailView.showMissingTask();
             return;
         }
-        mTaskDetailView.showEditTask(mTaskId);
+        taskDetailView.showEditTask(mTaskId);
     }
 
     @Override
     public void deleteTask() {
         if (Strings.isNullOrEmpty(mTaskId)) {
-            mTaskDetailView.showMissingTask();
+            taskDetailView.showMissingTask();
             return;
         }
-        mTasksRepository.deleteTask(mTaskId);
-        mTaskDetailView.showTaskDeleted();
+        tasksRepository.deleteTask(mTaskId);
+        taskDetailView.showTaskDeleted();
     }
 
     @Override
     public void completeTask() {
         if (Strings.isNullOrEmpty(mTaskId)) {
-            mTaskDetailView.showMissingTask();
+            taskDetailView.showMissingTask();
             return;
         }
-        mTasksRepository.completeTask(mTaskId);
-        mTaskDetailView.showTaskMarkedComplete();
+        tasksRepository.completeTask(mTaskId);
+        taskDetailView.showTaskMarkedComplete();
     }
 
     @Override
     public void activateTask() {
         if (Strings.isNullOrEmpty(mTaskId)) {
-            mTaskDetailView.showMissingTask();
+            taskDetailView.showMissingTask();
             return;
         }
-        mTasksRepository.activateTask(mTaskId);
-        mTaskDetailView.showTaskMarkedActive();
+        tasksRepository.activateTask(mTaskId);
+        taskDetailView.showTaskMarkedActive();
     }
 
     private void showTask(@NonNull Task task) {
@@ -131,16 +131,16 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
         String description = task.getDescription();
 
         if (Strings.isNullOrEmpty(title)) {
-            mTaskDetailView.hideTitle();
+            taskDetailView.hideTitle();
         } else {
-            mTaskDetailView.showTitle(title);
+            taskDetailView.showTitle(title);
         }
 
         if (Strings.isNullOrEmpty(description)) {
-            mTaskDetailView.hideDescription();
+            taskDetailView.hideDescription();
         } else {
-            mTaskDetailView.showDescription(description);
+            taskDetailView.showDescription(description);
         }
-        mTaskDetailView.showCompletionStatus(task.isCompleted());
+        taskDetailView.showCompletionStatus(task.isCompleted());
     }
 }

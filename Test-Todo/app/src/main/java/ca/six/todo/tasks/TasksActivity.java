@@ -38,9 +38,9 @@ public class TasksActivity extends AppCompatActivity {
 
     private static final String CURRENT_FILTERING_KEY = "CURRENT_FILTERING_KEY";
 
-    private DrawerLayout mDrawerLayout;
+    private DrawerLayout drawerLayout;
 
-    private TasksPresenter mTasksPresenter;
+    private TasksPresenter tasksPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +55,8 @@ public class TasksActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         // Set up the navigation drawer.
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
@@ -72,20 +72,20 @@ public class TasksActivity extends AppCompatActivity {
         }
 
         // Create the presenter
-        mTasksPresenter = new TasksPresenter(
+        tasksPresenter = new TasksPresenter(
                 Injection.provideTasksRepository(getApplicationContext()), tasksFragment);
 
         // Load previously saved state, if available.
         if (savedInstanceState != null) {
             TasksFilterType currentFiltering =
                     (TasksFilterType) savedInstanceState.getSerializable(CURRENT_FILTERING_KEY);
-            mTasksPresenter.setFiltering(currentFiltering);
+            tasksPresenter.setFiltering(currentFiltering);
         }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable(CURRENT_FILTERING_KEY, mTasksPresenter.getFiltering());
+        outState.putSerializable(CURRENT_FILTERING_KEY, tasksPresenter.getFiltering());
 
         super.onSaveInstanceState(outState);
     }
@@ -95,7 +95,7 @@ public class TasksActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // Open the navigation drawer when the home icon is selected from the toolbar.
-                mDrawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -120,7 +120,7 @@ public class TasksActivity extends AppCompatActivity {
                         }
                         // Close the navigation drawer when an item is selected.
                         menuItem.setChecked(true);
-                        mDrawerLayout.closeDrawers();
+                        drawerLayout.closeDrawers();
                         return true;
                     }
                 });

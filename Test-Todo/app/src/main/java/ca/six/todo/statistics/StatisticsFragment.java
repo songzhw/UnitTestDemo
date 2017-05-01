@@ -34,9 +34,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class StatisticsFragment extends Fragment implements StatisticsContract.View {
 
-    private TextView mStatisticsTV;
-
-    private StatisticsContract.Presenter mPresenter;
+    private TextView tvStatistics;
+    private StatisticsContract.Presenter presenter;
 
     public static StatisticsFragment newInstance() {
         return new StatisticsFragment();
@@ -44,7 +43,7 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
 
     @Override
     public void setPresenter(@NonNull StatisticsContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     @Nullable
@@ -52,40 +51,40 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.statistics_frag, container, false);
-        mStatisticsTV = (TextView) root.findViewById(R.id.statistics);
+        tvStatistics = (TextView) root.findViewById(R.id.statistics);
         return root;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+        presenter.start();
     }
 
     @Override
     public void setProgressIndicator(boolean active) {
         if (active) {
-            mStatisticsTV.setText(getString(R.string.loading));
+            tvStatistics.setText(getString(R.string.loading));
         } else {
-            mStatisticsTV.setText("");
+            tvStatistics.setText("");
         }
     }
 
     @Override
     public void showStatistics(int numberOfIncompleteTasks, int numberOfCompletedTasks) {
         if (numberOfCompletedTasks == 0 && numberOfIncompleteTasks == 0) {
-            mStatisticsTV.setText(getResources().getString(R.string.statistics_no_tasks));
+            tvStatistics.setText(getResources().getString(R.string.statistics_no_tasks));
         } else {
             String displayString = getResources().getString(R.string.statistics_active_tasks) + " "
                     + numberOfIncompleteTasks + "\n" + getResources().getString(
                     R.string.statistics_completed_tasks) + " " + numberOfCompletedTasks;
-            mStatisticsTV.setText(displayString);
+            tvStatistics.setText(displayString);
         }
     }
 
     @Override
     public void showLoadingStatisticsError() {
-        mStatisticsTV.setText(getResources().getString(R.string.statistics_error));
+        tvStatistics.setText(getResources().getString(R.string.statistics_error));
     }
 
     @Override

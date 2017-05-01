@@ -33,16 +33,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class StatisticsPresenter implements StatisticsContract.Presenter {
 
-    private final TasksRepository mTasksRepository;
+    private final TasksRepository tasksRepository;
 
-    private final StatisticsContract.View mStatisticsView;
+    private final StatisticsContract.View statisticsView;
 
     public StatisticsPresenter(@NonNull TasksRepository tasksRepository,
                                @NonNull StatisticsContract.View statisticsView) {
-        mTasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null");
-        mStatisticsView = checkNotNull(statisticsView, "StatisticsView cannot be null!");
+        this.tasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null");
+        this.statisticsView = checkNotNull(statisticsView, "StatisticsView cannot be null!");
 
-        mStatisticsView.setPresenter(this);
+        this.statisticsView.setPresenter(this);
     }
 
     @Override
@@ -51,13 +51,13 @@ public class StatisticsPresenter implements StatisticsContract.Presenter {
     }
 
     private void loadStatistics() {
-        mStatisticsView.setProgressIndicator(true);
+        statisticsView.setProgressIndicator(true);
 
         // The network request might be handled in a different thread so make sure Espresso knows
         // that the app is busy until the response is handled.
         EspressoIdlingResource.increment(); // App is busy until further notice
 
-        mTasksRepository.getTasks(new TasksDataSource.LoadTasksCallback() {
+        tasksRepository.getTasks(new TasksDataSource.LoadTasksCallback() {
             @Override
             public void onTasksLoaded(List<Task> tasks) {
                 int activeTasks = 0;
@@ -79,21 +79,21 @@ public class StatisticsPresenter implements StatisticsContract.Presenter {
                     }
                 }
                 // The view may not be able to handle UI updates anymore
-                if (!mStatisticsView.isActive()) {
+                if (!statisticsView.isActive()) {
                     return;
                 }
-                mStatisticsView.setProgressIndicator(false);
+                statisticsView.setProgressIndicator(false);
 
-                mStatisticsView.showStatistics(activeTasks, completedTasks);
+                statisticsView.showStatistics(activeTasks, completedTasks);
             }
 
             @Override
             public void onDataNotAvailable() {
                 // The view may not be able to handle UI updates anymore
-                if (!mStatisticsView.isActive()) {
+                if (!statisticsView.isActive()) {
                     return;
                 }
-                mStatisticsView.showLoadingStatisticsError();
+                statisticsView.showLoadingStatisticsError();
             }
         });
     }

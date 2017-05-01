@@ -38,9 +38,9 @@ public class AddEditTaskActivity extends AppCompatActivity {
 
     public static final String SHOULD_LOAD_DATA_FROM_REPO_KEY = "SHOULD_LOAD_DATA_FROM_REPO_KEY";
 
-    private AddEditTaskPresenter mAddEditTaskPresenter;
+    private AddEditTaskPresenter addEditTaskPresenter;
 
-    private ActionBar mActionBar;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,9 @@ public class AddEditTaskActivity extends AppCompatActivity {
         // Set up the toolbar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setDisplayShowHomeEnabled(true);
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         AddEditTaskFragment addEditTaskFragment = (AddEditTaskFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.contentFrame);
@@ -83,7 +83,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
         }
 
         // Create the presenter
-        mAddEditTaskPresenter = new AddEditTaskPresenter(
+        addEditTaskPresenter = new AddEditTaskPresenter(
                 taskId,
                 Injection.provideTasksRepository(getApplicationContext()),
                 addEditTaskFragment,
@@ -92,16 +92,16 @@ public class AddEditTaskActivity extends AppCompatActivity {
 
     private void setToolbarTitle(@Nullable String taskId) {
         if(taskId == null) {
-            mActionBar.setTitle(R.string.add_task);
+            actionBar.setTitle(R.string.add_task);
         } else {
-            mActionBar.setTitle(R.string.edit_task);
+            actionBar.setTitle(R.string.edit_task);
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         // Save the state so that next time we know if we need to refresh data.
-        outState.putBoolean(SHOULD_LOAD_DATA_FROM_REPO_KEY, mAddEditTaskPresenter.isDataMissing());
+        outState.putBoolean(SHOULD_LOAD_DATA_FROM_REPO_KEY, addEditTaskPresenter.isDataMissing());
         super.onSaveInstanceState(outState);
     }
 

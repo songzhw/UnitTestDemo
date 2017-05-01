@@ -36,19 +36,19 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class TasksPresenter implements TasksContract.Presenter {
 
-    private final TasksRepository mTasksRepository;
+    private final TasksRepository tasksRepository;
 
-    private final TasksContract.View mTasksView;
+    private final TasksContract.View tasksView;
 
-    private TasksFilterType mCurrentFiltering = TasksFilterType.ALL_TASKS;
+    private TasksFilterType currentFiltering = TasksFilterType.ALL_TASKS;
 
-    private boolean mFirstLoad = true;
+    private boolean isFirstLoad = true;
 
     public TasksPresenter(@NonNull TasksRepository tasksRepository, @NonNull TasksContract.View tasksView) {
-        mTasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null");
-        mTasksView = checkNotNull(tasksView, "tasksView cannot be null!");
+        this.tasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null");
+        this.tasksView = checkNotNull(tasksView, "tasksView cannot be null!");
 
-        mTasksView.setPresenter(this);
+        this.tasksView.setPresenter(this);
     }
 
     @Override
@@ -60,15 +60,15 @@ public class TasksPresenter implements TasksContract.Presenter {
     public void result(int requestCode, int resultCode) {
         // If a task was successfully added, show snackbar
         if (AddEditTaskActivity.REQUEST_ADD_TASK == requestCode && Activity.RESULT_OK == resultCode) {
-            mTasksView.showSuccessfullySavedMessage();
+            tasksView.showSuccessfullySavedMessage();
         }
     }
 
     @Override
     public void loadTasks(boolean forceUpdate) {
         // Simplification for sample: a network reload will be forced on first load.
-        loadTasks(forceUpdate || mFirstLoad, true);
-        mFirstLoad = false;
+        loadTasks(forceUpdate || isFirstLoad, true);
+        isFirstLoad = false;
     }
 
     /**
@@ -77,17 +77,17 @@ public class TasksPresenter implements TasksContract.Presenter {
      */
     private void loadTasks(boolean forceUpdate, final boolean showLoadingUI) {
         if (showLoadingUI) {
-            mTasksView.setLoadingIndicator(true);
+            tasksView.setLoadingIndicator(true);
         }
         if (forceUpdate) {
-            mTasksRepository.refreshTasks();
+            tasksRepository.refreshTasks();
         }
 
         // The network request might be handled in a different thread so make sure Espresso knows
         // that the app is busy until the response is handled.
         EspressoIdlingResource.increment(); // App is busy until further notice
 
-        mTasksRepository.getTasks(new TasksDataSource.LoadTasksCallback() {
+        tasksRepository.getTasks(new TasksDataSource.LoadTasksCallback() {
             @Override
             public void onTasksLoaded(List<Task> tasks) {
                 List<Task> tasksToShow = new ArrayList<Task>();
@@ -101,7 +101,7 @@ public class TasksPresenter implements TasksContract.Presenter {
 
                 // We filter the tasks based on the requestType
                 for (Task task : tasks) {
-                    switch (mCurrentFiltering) {
+                    switch (currentFiltering) {
                         case ALL_TASKS:
                             tasksToShow.add(task);
                             break;
@@ -121,11 +121,11 @@ public class TasksPresenter implements TasksContract.Presenter {
                     }
                 }
                 // The view may not be able to handle UI updates anymore
-                if (!mTasksView.isActive()) {
+                if (!tasksView.isActive()) {
                     return;
                 }
                 if (showLoadingUI) {
-                    mTasksView.setLoadingIndicator(false);
+                    tasksView.setLoadingIndicator(false);
                 }
 
                 processTasks(tasksToShow);
@@ -134,10 +134,10 @@ public class TasksPresenter implements TasksContract.Presenter {
             @Override
             public void onDataNotAvailable() {
                 // The view may not be able to handle UI updates anymore
-                if (!mTasksView.isActive()) {
+                if (!tasksView.isActive()) {
                     return;
                 }
-                mTasksView.showLoadingTasksError();
+                tasksView.showLoadingTasksError();
             }
         });
     }
@@ -148,71 +148,71 @@ public class TasksPresenter implements TasksContract.Presenter {
             processEmptyTasks();
         } else {
             // Show the list of tasks
-            mTasksView.showTasks(tasks);
+            tasksView.showTasks(tasks);
             // Set the filter label's text.
             showFilterLabel();
         }
     }
 
     private void showFilterLabel() {
-        switch (mCurrentFiltering) {
+        switch (currentFiltering) {
             case ACTIVE_TASKS:
-                mTasksView.showActiveFilterLabel();
+                tasksView.showActiveFilterLabel();
                 break;
             case COMPLETED_TASKS:
-                mTasksView.showCompletedFilterLabel();
+                tasksView.showCompletedFilterLabel();
                 break;
             default:
-                mTasksView.showAllFilterLabel();
+                tasksView.showAllFilterLabel();
                 break;
         }
     }
 
     private void processEmptyTasks() {
-        switch (mCurrentFiltering) {
+        switch (currentFiltering) {
             case ACTIVE_TASKS:
-                mTasksView.showNoActiveTasks();
+                tasksView.showNoActiveTasks();
                 break;
             case COMPLETED_TASKS:
-                mTasksView.showNoCompletedTasks();
+                tasksView.showNoCompletedTasks();
                 break;
             default:
-                mTasksView.showNoTasks();
+                tasksView.showNoTasks();
                 break;
         }
     }
 
     @Override
     public void addNewTask() {
-        mTasksView.showAddTask();
+        tasksView.showAddTask();
     }
 
     @Override
     public void openTaskDetails(@NonNull Task requestedTask) {
         checkNotNull(requestedTask, "requestedTask cannot be null!");
-        mTasksView.showTaskDetailsUi(requestedTask.getId());
+        tasksView.showTaskDetailsUi(requestedTask.getId());
     }
 
     @Override
     public void completeTask(@NonNull Task completedTask) {
         checkNotNull(completedTask, "completedTask cannot be null!");
-        mTasksRepository.completeTask(completedTask);
-        mTasksView.showTaskMarkedComplete();
+        tasksRepository.completeTask(completedTask);
+        tasksView.showTaskMarkedComplete();
         loadTasks(false, false);
     }
 
     @Override
     public void activateTask(@NonNull Task activeTask) {
         checkNotNull(activeTask, "activeTask cannot be null!");
-        mTasksRepository.activateTask(activeTask);
-        mTasksView.showTaskMarkedActive();
+        tasksRepository.activateTask(activeTask);
+        tasksView.showTaskMarkedActive();
         loadTasks(false, false);
     }
 
     @Override
     public void clearCompletedTasks() {
-        mTasksRepository.clearCompletedTasks();
-        mTasksView.showCompletedTasksCleared();
+        tasksRepository.clearCompletedTasks();
+        tasksView.showCompletedTasksCleared();
         loadTasks(false, false);
     }
 
@@ -225,12 +225,12 @@ public class TasksPresenter implements TasksContract.Presenter {
      */
     @Override
     public void setFiltering(TasksFilterType requestType) {
-        mCurrentFiltering = requestType;
+        currentFiltering = requestType;
     }
 
     @Override
     public TasksFilterType getFiltering() {
-        return mCurrentFiltering;
+        return currentFiltering;
     }
 
 }

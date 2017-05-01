@@ -36,14 +36,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Main UI for the add task screen. Users can enter a task title and description.
  */
 public class AddEditTaskFragment extends Fragment implements AddEditTaskContract.View {
-
     public static final String ARGUMENT_EDIT_TASK_ID = "EDIT_TASK_ID";
 
-    private AddEditTaskContract.Presenter mPresenter;
+    private AddEditTaskContract.Presenter presenter;
 
-    private TextView mTitle;
-
-    private TextView mDescription;
+    private TextView tvTitle, tvDescription;
 
     public static AddEditTaskFragment newInstance() {
         return new AddEditTaskFragment();
@@ -56,12 +53,12 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+        presenter.start();
     }
 
     @Override
     public void setPresenter(@NonNull AddEditTaskContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     @Override
@@ -74,7 +71,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.saveTask(mTitle.getText().toString(), mDescription.getText().toString());
+                presenter.saveTask(tvTitle.getText().toString(), tvDescription.getText().toString());
             }
         });
     }
@@ -84,15 +81,15 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
-        mTitle = (TextView) root.findViewById(R.id.add_task_title);
-        mDescription = (TextView) root.findViewById(R.id.add_task_description);
+        tvTitle = (TextView) root.findViewById(R.id.add_task_title);
+        tvDescription = (TextView) root.findViewById(R.id.add_task_description);
         setHasOptionsMenu(true);
         return root;
     }
 
     @Override
     public void showEmptyTaskError() {
-        Snackbar.make(mTitle, getString(R.string.empty_task_message), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(tvTitle, getString(R.string.empty_task_message), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -103,12 +100,12 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     @Override
     public void setTitle(String title) {
-        mTitle.setText(title);
+        tvTitle.setText(title);
     }
 
     @Override
     public void setDescription(String description) {
-        mDescription.setText(description);
+        tvDescription.setText(description);
     }
 
     @Override

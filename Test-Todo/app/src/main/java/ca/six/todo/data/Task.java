@@ -30,15 +30,15 @@ import java.util.UUID;
 public final class Task {
 
     @NonNull
-    private final String mId;
+    private final String id;
 
     @Nullable
-    private final String mTitle;
+    private final String title;
 
     @Nullable
-    private final String mDescription;
+    private final String description;
 
-    private final boolean mCompleted;
+    private final boolean isCompleted;
 
     /**
      * Use this constructor to create a new active Task.
@@ -84,47 +84,47 @@ public final class Task {
      */
     public Task(@Nullable String title, @Nullable String description,
                 @NonNull String id, boolean completed) {
-        mId = id;
-        mTitle = title;
-        mDescription = description;
-        mCompleted = completed;
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        isCompleted = completed;
     }
 
     @NonNull
     public String getId() {
-        return mId;
+        return id;
     }
 
     @Nullable
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
     @Nullable
     public String getTitleForList() {
-        if (!Strings.isNullOrEmpty(mTitle)) {
-            return mTitle;
+        if (!Strings.isNullOrEmpty(title)) {
+            return title;
         } else {
-            return mDescription;
+            return description;
         }
     }
 
     @Nullable
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public boolean isCompleted() {
-        return mCompleted;
+        return isCompleted;
     }
 
     public boolean isActive() {
-        return !mCompleted;
+        return !isCompleted;
     }
 
     public boolean isEmpty() {
-        return Strings.isNullOrEmpty(mTitle) &&
-               Strings.isNullOrEmpty(mDescription);
+        return Strings.isNullOrEmpty(title) &&
+               Strings.isNullOrEmpty(description);
     }
 
     @Override
@@ -132,18 +132,18 @@ public final class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equal(mId, task.mId) &&
-               Objects.equal(mTitle, task.mTitle) &&
-               Objects.equal(mDescription, task.mDescription);
+        return Objects.equal(id, task.id) &&
+               Objects.equal(title, task.title) &&
+               Objects.equal(description, task.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mId, mTitle, mDescription);
+        return Objects.hashCode(id, title, description);
     }
 
     @Override
     public String toString() {
-        return "Task with title " + mTitle;
+        return "Task with title " + title;
     }
 }

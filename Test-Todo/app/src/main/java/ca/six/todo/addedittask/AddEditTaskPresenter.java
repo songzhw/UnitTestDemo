@@ -75,17 +75,6 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         tasksRepository.getTask(taskId, this);
     }
 
-
-    @Override
-    public void saveTask(String title, String description) {
-        if (isNewTask()) {
-            createTask(title, description);
-        } else {
-            updateTask(title, description);
-        }
-    }
-
-
     @Override
     public void onTaskLoaded(Task task) {
         // The view may not be able to handle UI updates anymore
@@ -111,6 +100,18 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
 
     private boolean isNewTask() {
         return taskId == null;
+    }
+
+
+
+
+    @Override
+    public void saveTask(String title, String description) {
+        if (isNewTask()) {
+            createTask(title, description);
+        } else {
+            updateTask(title, description);
+        }
     }
 
     private void createTask(String title, String description) {

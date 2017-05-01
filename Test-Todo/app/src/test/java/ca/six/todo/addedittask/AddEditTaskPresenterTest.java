@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 
 import ca.six.todo.data.Task;
 import ca.six.todo.data.source.TasksDataSource;
+
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
@@ -70,6 +71,29 @@ public class AddEditTaskPresenterTest {
         verify(view).showEmptyTaskError();
     }
 
+
+    @Test
+    public void editTask_puluateTaskSucc(){
+        AddEditTaskPresenter presenter = new AddEditTaskPresenter("1000", repo, view, true);
+        presenter.start();
+
+        verify(repo).getTask(eq("1000"), captor.capture());
+        captor.getValue().onTaskLoaded(new Task(TITLE, DESCRIPTION));
+
+        verify(view).setTitle(TITLE);
+        verify(view).setDescription(DESCRIPTION);
+        assertFalse(presenter.isDataMissing());
+    }
+
+    @Test
+    public void editTask_updateAndSave(){
+        AddEditTaskPresenter presenter = new AddEditTaskPresenter("1000", repo, view, true);
+        presenter.saveTask(TITLE, DESCRIPTION);
+
+        Task task = new Task(TITLE, DESCRIPTION, "1000");
+        verify(repo).saveTask(task);
+        verify(view).showTasksList();
+    }
 }
 
 /*
@@ -80,7 +104,7 @@ Issue02. test all the public methods?
 : No. start() method is an example
 
 Issue03. why mock TaskRepo, not TaskSource in the sample?
-:
+: 实践证明，可以用TaskRepo的！ 而且我感觉因为TaskRepo是接口，其实更好Mock, 是更好的选择。
 
 Issue04: create new task failed in the test:
         Task task = new Task(TITLE, DESCRIPTION);
@@ -88,7 +112,6 @@ Issue04: create new task failed in the test:
 : Erro Info : "Argument(s) are different". Because the ID is different!
 Then how to solve it?
 : use "any(Task.class)"
-
-
+  或者， src中 createTask()不是return void, 而是return Task;
 
 */

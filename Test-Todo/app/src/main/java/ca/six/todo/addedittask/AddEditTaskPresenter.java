@@ -68,6 +68,15 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
     }
 
     @Override
+    public void populateTask() {
+        if (isNewTask()) {
+            throw new RuntimeException("populateTask() was called but task is new.");
+        }
+        tasksRepository.getTask(taskId, this);
+    }
+
+
+    @Override
     public void saveTask(String title, String description) {
         if (isNewTask()) {
             createTask(title, description);
@@ -76,13 +85,6 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         }
     }
 
-    @Override
-    public void populateTask() {
-        if (isNewTask()) {
-            throw new RuntimeException("populateTask() was called but task is new.");
-        }
-        tasksRepository.getTask(taskId, this);
-    }
 
     @Override
     public void onTaskLoaded(Task task) {

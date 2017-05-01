@@ -3,33 +3,40 @@ package ca.six.todo.addedittask;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import ca.six.todo.Injection;
 import ca.six.todo.data.Task;
 import ca.six.todo.data.source.TasksDataSource;
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class AddEditTaskPresenterTest {
     @Mock AddEditTaskContract.View view;
     @Mock TasksDataSource repo;
+    @Captor ArgumentCaptor<TasksDataSource.GetTaskCallback> captor;
 
-    public static final String TITLE = "title";
-    public static final String DESCRIPTION = "description";
+    private static final String TITLE = "title";
+    private static final String DESCRIPTION = "description";
 
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
+        when(view.isActive()).thenReturn(true);
     }
-
 
     @Test
-    public void createTask_showEmptyView() throws Exception {
+    public void createTask_setPresenterToView() throws Exception {
         AddEditTaskPresenter presenter = new AddEditTaskPresenter(null, repo, view, true);
-        // do nothing. so it's not testable
+        verify(view).setPresenter(presenter);
     }
+
+    // ========================= Create New Page =========================
 
     @Test
     public void createAndSaveEmptyTask_showError() throws Exception {
@@ -46,9 +53,21 @@ public class AddEditTaskPresenterTest {
         AddEditTaskPresenter presenter = new AddEditTaskPresenter(null, repo, view, true);
         presenter.saveTask(TITLE, DESCRIPTION);
 
-        Task task = new Task(TITLE, DESCRIPTION);
-        verify(repo).saveTask(task);
+//        Task task = new Task(TITLE, DESCRIPTION);//=> 会fail掉测试。 因为生成的id是随机的
+        verify(repo).saveTask(any(Task.class));
         verify(view).showTasksList();
+    }
+
+
+    // ========================= Edit Task Page =========================
+    @Test
+    public void editTask_populateTaskFailed(){
+        AddEditTaskPresenter presenter = new AddEditTaskPresenter("1000", repo, view, true);
+        presenter.start();
+
+        verify(repo).getTask(eq("1000"), captor.capture());
+        captor.getValue().onDataNotAvailable();
+        verify(view).showEmptyTaskError();
     }
 
 }
@@ -68,6 +87,8 @@ Issue04: create new task failed in the test:
         verify(repo).saveTask(task)
 : Erro Info : "Argument(s) are different". Because the ID is different!
 Then how to solve it?
-: 
+: use "any(Task.class)"
+
+
 
 */

@@ -25,6 +25,7 @@ public class StatisticsPresenterTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        when(view.isActive()).thenReturn(true);
     }
 
     @Test

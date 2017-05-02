@@ -49,23 +49,24 @@ public class AddEditTaskFragmentTest {
 
     }
 
-//    @Test
-//    public void createTask_inputAndSaveTask(){
-//        // screen is empty at first
-//        onView(withId(R.id.add_task_title))
-//                .check(matches(withText("")));
-//
-//        // type text and save
-//        onView(withId(R.id.add_task_title))
-//                .perform(typeText("grocery"));
-//        onView(withId(R.id.add_task_description))
-//                .perform(typeText("tomato, onion, garlic, eggplant"));
-//        onView(withId(R.id.fab_edit_task_done))
-//                .perform(click());
-//
-//        // check the result
-//
-//
-//    }
+    @Test
+    public void createTask_inputAndSaveTask(){
+        // screen is empty at first
+        onView(withId(R.id.add_task_title))
+                .check(matches(withText("")));
+
+        // type text and save
+        onView(withId(R.id.add_task_title))
+                .perform(typeText("grocery"));
+        onView(withId(R.id.add_task_description))
+                .perform(typeText("tomato, onion, garlic, eggplant"));
+        onView(withId(R.id.fab_edit_task_done))
+                .perform(click());
+
+        // check the result : 这个条件不好。因为在add页不退出，这个"grocery"也有的
+//        onView(withText("grocery"))
+//            .check( matches(isDisplayed()) );
+
+    }
 
 }

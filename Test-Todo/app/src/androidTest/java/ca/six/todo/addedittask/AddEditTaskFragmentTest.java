@@ -49,6 +49,9 @@ public class AddEditTaskFragmentTest {
 
     }
 
+    // This test method should belong to "TasksScreenTest"
+/*
+
     @Test
     public void createTask_inputAndSaveTask(){
         // screen is empty at first
@@ -68,5 +71,6 @@ public class AddEditTaskFragmentTest {
 //            .check( matches(isDisplayed()) );
 
     }
+*/
 
 }

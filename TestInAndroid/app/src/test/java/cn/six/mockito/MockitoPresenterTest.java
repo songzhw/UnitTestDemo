@@ -31,10 +31,10 @@ public class MockitoPresenterTest {
         MockitoPresenter presenter = new MockitoPresenter(view, model);
         presenter.inOrderTest();
         // 因为还没有调用 captor.getValue().onSucc()， 所以这里能成功
-        verify(view).setFinished(false);
 
         verify(model).load(eq(100), captor.capture());
         captor.getValue().onSucc();
+        verify(view).setFinished(false);
         verify(view).setFinished(true);
     }
 
@@ -44,10 +44,9 @@ public class MockitoPresenterTest {
         presenter.inOrderTest();
 
         InOrder order = inOrder(view);
-        order.verify(view).setFinished(false);
-
         verify(model).load(eq(100), captor.capture());
         captor.getValue().onSucc();
+        order.verify(view).setFinished(false);
         order.verify(view).setFinished(true);
     }
 

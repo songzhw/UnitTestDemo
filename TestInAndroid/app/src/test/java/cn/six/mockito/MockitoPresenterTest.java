@@ -4,10 +4,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
+
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class MockitoPresenterTest {
@@ -24,10 +30,36 @@ public class MockitoPresenterTest {
     public void testInOrder(){
         MockitoPresenter presenter = new MockitoPresenter(view, model);
         presenter.inOrderTest();
+        // 因为还没有调用 captor.getValue().onSucc()， 所以这里能成功
+        verify(view).setFinished(false);
 
         verify(model).load(eq(100), captor.capture());
         captor.getValue().onSucc();
         verify(view).setFinished(true);
     }
 
+    @Test
+    public void testInOrder2(){
+        MockitoPresenter presenter = new MockitoPresenter(view, model);
+        presenter.inOrderTest();
+
+        InOrder order = inOrder(view);
+        order.verify(view).setFinished(false);
+
+        verify(model).load(eq(100), captor.capture());
+        captor.getValue().onSucc();
+        order.verify(view).setFinished(true);
+    }
+
+    @Test
+    public void testInOrder3(){
+        List firstMock = mock(List.class);
+        List secondMock = mock(List.class);
+        firstMock.add("was called first");
+        secondMock.add("was called second");
+
+        InOrder order = inOrder(firstMock, secondMock);
+        order.verify(firstMock).add("was called first");
+        order.verify(secondMock).add("was called second");
+    }
 }

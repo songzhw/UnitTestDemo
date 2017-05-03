@@ -49,11 +49,24 @@ public class StatisticsPresenterTest {
 
     @Test
     public void loadTaskStatisticsFail() {
+        StatisticsPresenter presenter = new StatisticsPresenter(repo, view);
+        presenter.start();
 
+        verify(repo).getTasks(captor.capture());
+        captor.getValue().onDataNotAvailable();
+
+        verify(view).showLoadingStatisticsError();
     }
 
     @Test
     public void tasksIsEmpty_ShowEmptyUI() {
+        StatisticsPresenter presenter = new StatisticsPresenter(repo, view);
+        presenter.start();
 
+        verify(repo).getTasks(captor.capture());
+        // the argument should not be null
+        captor.getValue().onTasksLoaded(new ArrayList<Task>());
+
+        verify(view).showStatistics(0, 0);
     }
 }

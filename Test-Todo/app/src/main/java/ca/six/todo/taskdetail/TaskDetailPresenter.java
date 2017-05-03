@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 import ca.six.todo.data.Task;
 import ca.six.todo.data.source.TasksDataSource;
 import ca.six.todo.data.source.TasksRepository;
+
 import com.google.common.base.Strings;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -60,7 +61,7 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
             return;
         }
 
-       taskDetailView.setLoadingIndicator(true);
+        taskDetailView.setLoadingIndicator(true);
         tasksRepository.getTask(mTaskId, new TasksDataSource.GetTaskCallback() {
             @Override
             public void onTaskLoaded(Task task) {

@@ -15,6 +15,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TasksPresenterTest {
     @Mock TasksContract.View view;
@@ -41,5 +43,37 @@ public class TasksPresenterTest {
         // default filter is : All_Tasks
         verify(view).showNoTasks();
     }
+
+    @Test
+    public void testFirstEnters_getDataFailed(){
+        TasksPresenter presenter = new TasksPresenter(repo, view);
+        presenter.start();
+
+        verify(repo).getTasks(captor.capture());
+        captor.getValue().onDataNotAvailable();
+
+        verify(view).showLoadingTasksError();
+    }
+    @Test
+    public void showMultipleTasks(){
+        TasksPresenter presenter = new TasksPresenter(repo, view);
+        presenter.start();
+
+        Task[] tmp = new Task[]{
+                new Task("01","u", false),
+                new Task("02","", false),
+                new Task("03","", true),
+                new Task("04","x", false)
+        };
+        List<Task> tasks = Arrays.asList(tmp);
+
+        verify(repo).getTasks(captor.capture());
+        captor.getValue().onTasksLoaded(tasks);
+
+        verify(view).showTasks(tasks);
+        verify(view).showAllFilterLabel();
+
+    }
+
 
 }

@@ -76,4 +76,32 @@ public class TasksPresenterTest {
     }
 
 
+    @Test
+    public void testAddNewTask() {
+        TasksPresenter presenter = new TasksPresenter(repo, view);
+        presenter.addNewTask();
+
+        verify(view).showAddTask();
+    }
+
+    @Test
+    public void changeFilterToActive_showThreeTasks() {
+        // fragment will call p.setFilter() and p.loadTasks(false);
+        TasksPresenter presenter = new TasksPresenter(repo, view);
+        presenter.setFiltering(TasksFilterType.ACTIVE_TASKS);
+        presenter.loadTasks(false);
+
+        List<Task> tasksToShow = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.isActive()) {
+                tasksToShow.add(task);
+            }
+        }
+        assertEquals(3, tasksToShow.size());
+
+        verify(view).showTasks(tasksToShow);
+        verify(view).showActiveFilterLabel();
+    }
+
+
 }

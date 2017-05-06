@@ -18,8 +18,7 @@ public class MockitoPresenter {
             }
 
             @Override
-            public void onFail() {
-            }
+            public void onFail() { }
         });
 
     }

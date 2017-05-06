@@ -39,6 +39,23 @@ public class MockitoPresenterTest {
     }
 
     @Test
+    public void testInOrder4(){
+        MockitoPresenter presenter = new MockitoPresenter(view, model);
+        presenter.inOrderTest();
+        // 因为还没有调用 captor.getValue().onSucc()， 所以这里能成功
+
+        verify(model).load(eq(100), captor.capture());
+        captor.getValue().onSucc();
+        verify(view).setFinished(true);
+        verify(view).setFinished(false);
+        /*
+        verify(view).setFinished(true);
+        verify(view).setFinished(false);
+        也能成功，所以说明了InOrder的作用
+         */
+    }
+
+    @Test
     public void testInOrder2(){
         MockitoPresenter presenter = new MockitoPresenter(view, model);
         presenter.inOrderTest();

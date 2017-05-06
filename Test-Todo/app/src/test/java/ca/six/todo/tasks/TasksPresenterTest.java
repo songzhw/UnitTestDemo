@@ -22,11 +22,20 @@ public class TasksPresenterTest {
     @Mock TasksContract.View view;
     @Mock TasksRepository repo;
     @Captor ArgumentCaptor<TasksDataSource.LoadTasksCallback> captor;
+    private List<Task> tasks;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         when(view.isActive()).thenReturn(true);
+
+        Task[] tmp = new Task[]{
+                new Task("01","u", false),
+                new Task("02","", false),
+                new Task("03","", true),
+                new Task("04","x", false)
+        };
+        tasks = Arrays.asList(tmp);
     }
 
     @Test
@@ -59,14 +68,6 @@ public class TasksPresenterTest {
         TasksPresenter presenter = new TasksPresenter(repo, view);
         presenter.start();
 
-        Task[] tmp = new Task[]{
-                new Task("01","u", false),
-                new Task("02","", false),
-                new Task("03","", true),
-                new Task("04","x", false)
-        };
-        List<Task> tasks = Arrays.asList(tmp);
-
         verify(repo).getTasks(captor.capture());
         captor.getValue().onTasksLoaded(tasks);
 
@@ -84,6 +85,7 @@ public class TasksPresenterTest {
         verify(view).showAddTask();
     }
 
+
     @Test
     public void changeFilterToActive_showThreeTasks() {
         // fragment will call p.setFilter() and p.loadTasks(false);
@@ -99,9 +101,13 @@ public class TasksPresenterTest {
         }
         assertEquals(3, tasksToShow.size());
 
+        verify(repo).getTasks(captor.capture());
+        captor.getValue().onTasksLoaded(tasks);
+
         verify(view).showTasks(tasksToShow);
         verify(view).showActiveFilterLabel();
     }
+
 
 
 }

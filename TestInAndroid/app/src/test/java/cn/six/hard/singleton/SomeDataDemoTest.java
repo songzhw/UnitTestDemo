@@ -15,6 +15,14 @@ public class SomeDataDemoTest {
         assertEquals(1, obj.value);
     }
 
+    @Test
+    public void foo_notNullData_valueIs2() throws Exception {
+        SomeDataList.getInstance().setList(23, 24);
 
+        SomeDataDemo obj = new SomeDataDemo();
+        obj.foo();
+
+        assertEquals(2, obj.value);
+    }
 
 }

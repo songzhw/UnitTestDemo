@@ -2,7 +2,6 @@ package cn.six.hard.singleton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public final class SomeDataList {
     private static SomeDataList instance = new SomeDataList();
@@ -20,6 +19,11 @@ public final class SomeDataList {
     }
 
     public void setList(Object... objs) {
+        if(objs == null){
+            list = null;
+            return;
+        }
+
         if (list == null) {
             list = new ArrayList();
         }

@@ -16,7 +16,7 @@ public class ExampleWithEvilParentTest {
     @Test
     public void testSuppressConstructorOfEvilParent() throws Exception {
         suppress(constructor(EvilParent.class));
-
+        // supress(method(***.class, "methodName");
 
         final String message = "myMessage";
         ExampleWithEvilParent tested = new ExampleWithEvilParent(message);

@@ -53,6 +53,8 @@ dependencies {
 
     testCompile 'pl.pragmatists:JUnitParams:1.0.5'
 
+    // powermock 1.6.* is incompatiable with Mockito 2.x !
+    // see https://github.com/powermock/powermock/wiki/mockitousage#supported-versions
     testCompile 'org.powermock:powermock-api-mockito:1.6.6'
     testCompile 'org.powermock:powermock-module-junit4:1.6.6'
     testCompile 'org.powermock:powermock-module-junit4-rule-agent:1.6.6'

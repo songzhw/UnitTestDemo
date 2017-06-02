@@ -4,10 +4,10 @@ import cn.six.powermock.ITaskCallback;
 import cn.six.powermock.TaskUtils;
 
 public class TaskUtilsDemo {
+    public static int id = 0;
+
     public static void foo(){
-        TaskUtils.sendTask(1, new ITaskCallback() {
-            @Override public void onSucc(String str) { }
-            @Override public void onFail(int error)  { }
-        });
+        TaskUtils.foo();
+        id = 23;
     }
 }

@@ -1,6 +1,5 @@
 package cn.six.powermock._void;
 
-import cn.six.powermock.ITaskCallback;
 import cn.six.powermock.TaskUtils;
 
 public class TaskUtilsDemo {

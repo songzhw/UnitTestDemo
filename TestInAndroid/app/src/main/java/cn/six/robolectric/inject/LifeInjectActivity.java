@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-
+// since this is a passive view, it's not necessary to mock and inject a presetner!
 public class LifeInjectActivity extends Activity implements ILifeView {
     private ILifePresenter presenter;
     public String stage;

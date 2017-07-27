@@ -16,15 +16,16 @@ import cn.six.espresso.aut.R;
 import static junit.framework.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)  // 不用这个， 就在buildActivity时会错的
-@Config(constants = BuildConfig.class) // 修复说找不到AndroidManifest的warning
+@Config(constants = BuildConfig.class, sdk=21) // 修复说找不到AndroidManifest的warning
 public class LifeCycleAndResTest {
 
     @Test
     public void testLifecycle(){
         ActivityController<LifeCycleActivity> actvController =
-            Robolectric.buildActivity(LifeCycleActivity.class).create();
+                Robolectric.buildActivity(LifeCycleActivity.class);
         LifeCycleActivity actv = actvController.get();
 
+        actvController.create();
         assertEquals("onCreate", actv.stage);
 
         actvController.start();
@@ -36,6 +37,7 @@ public class LifeCycleAndResTest {
         actvController.destroy();
         assertEquals("onDestroy", actv.stage);
     }
+
 
 
     @Test

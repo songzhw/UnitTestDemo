@@ -4,7 +4,6 @@ package cn.six.robolectric.inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
@@ -18,10 +17,22 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class LifeInjectActivityTest {
-    @Mock
-    ILifePresenter presenter;
     private LifeInjectActivity actv;
     private ActivityController<LifeInjectActivity> actvController;
+
+    private ILifePresenter presenter = new ILifePresenter() {
+        private ILifeView view;
+
+        @Override
+        public void setView(ILifeView view) {
+            this.view = view;
+        }
+
+        @Override
+        public void getName() {
+            view.refresh("FakeOne");
+        }
+    };
 
     @Before
     public void setUp() throws Exception {
@@ -42,8 +53,10 @@ public class LifeInjectActivityTest {
 
     @Test
     public void testLifeInjectIsSuccessful() {
+        presenter.setView(actv);
         actv.setPresenter(presenter);
 
         actvController.create();
+        assertEquals("refresh: FakeOne", actv.stage);
     }
 }

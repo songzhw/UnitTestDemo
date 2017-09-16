@@ -65,12 +65,6 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (googleApiClient.isConnected()) {
-            Location mockedLocation = new Location("mock");
-            mockedLocation.setLatitude(30);
-            mockedLocation.setLongitude(121);
-            locationClient.setMockMode(googleApiClient, true);
-            locationClient.setMockLocation(googleApiClient, mockedLocation);
-
             locationClient.requestLocationUpdates(googleApiClient, locationRequest, this);
 
             Location location = locationClient.getLastLocation(googleApiClient);

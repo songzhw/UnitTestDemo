@@ -1,5 +1,6 @@
 package cn.six.espresso.location;
 
+import android.location.Location;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -23,8 +24,20 @@ public class AndroidLocationDemoTest {
 
     @Test
     public void testInit_whenHasPermission_showLocation() {
+        AndroidLocationDemo actv = activityTestRule.getActivity();
+        actv.onLocationChanged(getMockLocation());
+
         String lastLocation = "latitude  = " + 30 + " ; longitude = " + 121;
         onView(withId(R.id.tv_simple))
                 .check(matches (withText(lastLocation)));
     }
+
+    private Location getMockLocation(){
+        Location mockedLocation = new Location("MockedLocation");
+        mockedLocation.setLatitude(30);
+        mockedLocation.setLongitude(121);
+        return mockedLocation;
+    }
+
+
 }

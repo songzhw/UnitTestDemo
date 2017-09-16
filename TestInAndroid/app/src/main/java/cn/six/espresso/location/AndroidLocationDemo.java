@@ -66,8 +66,13 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
     public void onConnected(@Nullable Bundle bundle) {
         if (googleApiClient.isConnected()) {
             locationClient.requestLocationUpdates(googleApiClient, locationRequest, this);
+
+            Location location = locationClient.getLastLocation(googleApiClient);
+            if(location == null){ return;}
+            onLocationChanged(location);
         }
     }
+
 
     @Override
     public void onConnectionSuspended(int i) {

@@ -42,13 +42,6 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
 
         locationClient = LocationServices.FusedLocationApi;
 
-        Location mockedLocation = new Location("mock");
-        mockedLocation.setLatitude(30);
-        mockedLocation.setLongitude(121);
-        locationClient.setMockMode(googleApiClient, true);
-        locationClient.setMockLocation(googleApiClient, mockedLocation);
-
-
         locationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(5000)
@@ -72,6 +65,12 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (googleApiClient.isConnected()) {
+            Location mockedLocation = new Location("mock");
+            mockedLocation.setLatitude(30);
+            mockedLocation.setLongitude(121);
+            locationClient.setMockMode(googleApiClient, true);
+            locationClient.setMockLocation(googleApiClient, mockedLocation);
+
             locationClient.requestLocationUpdates(googleApiClient, locationRequest, this);
 
             Location location = locationClient.getLastLocation(googleApiClient);
@@ -79,6 +78,7 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
             onLocationChanged(location);
         }
     }
+
 
 
     @Override

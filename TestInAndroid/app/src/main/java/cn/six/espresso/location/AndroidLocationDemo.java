@@ -31,7 +31,7 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_btn);
-        tv = (TextView)findViewById(R.id.tv_simple);
+        tv = (TextView) findViewById(R.id.tv_simple);
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
@@ -47,7 +47,6 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
                 .setInterval(5000)
                 .setFastestInterval(1000)
                 .setSmallestDisplacement(2);
-
     }
 
     @Override
@@ -68,12 +67,12 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
             locationClient.requestLocationUpdates(googleApiClient, locationRequest, this);
 
             Location location = locationClient.getLastLocation(googleApiClient);
-            if(location == null){ return;}
+            if (location == null) {
+                return;
+            }
             onLocationChanged(location);
         }
     }
-
-
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -87,9 +86,9 @@ public class AndroidLocationDemo extends Activity implements GoogleApiClient.Con
 
     @Override
     public void onLocationChanged(Location location) {
-        System.out.println("szw + location1 : ( " + location.getLatitude() + " , " + location.getLongitude() + " )");
-
         String lastLocation = "latitude  = " + location.getLatitude() + " ; longitude = " + location.getLongitude();
         tv.setText(lastLocation);
+        System.out.println("szw onLocationChanged() : " + lastLocation);
     }
 }
+

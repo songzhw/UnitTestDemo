@@ -15,6 +15,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.*;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
 
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class AndroidLocationDemoTest {
@@ -24,20 +25,26 @@ public class AndroidLocationDemoTest {
 
     @Test
     public void testInit_whenHasPermission_showLocation() {
-        AndroidLocationDemo actv = activityTestRule.getActivity();
-        actv.onLocationChanged(getMockLocation());
+        // thread = Instr: android.support.test.runner.AndroidJUnitRunner
+        final AndroidLocationDemo actv = activityTestRule.getActivity();
+        actv.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                actv.onLocationChanged(getMockLocation());
+            }
+        });
 
-        String lastLocation = "latitude  = " + 30 + " ; longitude = " + 121;
+
+        String lastLocation = "latitude  = 30.0 ; longitude = 121.0";
         onView(withId(R.id.tv_simple))
-                .check(matches (withText(lastLocation)));
+                .check(matches(withText(lastLocation)));
     }
 
-    private Location getMockLocation(){
+    private Location getMockLocation() {
         Location mockedLocation = new Location("MockedLocation");
         mockedLocation.setLatitude(30);
         mockedLocation.setLongitude(121);
         return mockedLocation;
     }
-
-
 }
+

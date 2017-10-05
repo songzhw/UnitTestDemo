@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 /**
  * Created by songzhw on 2017-03-30

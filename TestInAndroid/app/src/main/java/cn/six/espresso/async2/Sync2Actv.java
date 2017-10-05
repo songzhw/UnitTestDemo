@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 /**
  * @author songzhw

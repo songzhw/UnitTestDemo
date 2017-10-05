@@ -9,7 +9,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import cn.six.espresso.aut.BuildConfig;
+import cn.six.aut.BuildConfig;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.mock;

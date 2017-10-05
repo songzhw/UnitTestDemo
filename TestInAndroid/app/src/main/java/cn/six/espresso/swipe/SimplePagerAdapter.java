@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 class SimplePagerAdapter extends PagerAdapter {
 

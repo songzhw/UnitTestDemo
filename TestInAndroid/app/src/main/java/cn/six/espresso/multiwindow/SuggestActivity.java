@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 /**
  * An {@link Activity} that shows an editable text and gives suggestions to the user.

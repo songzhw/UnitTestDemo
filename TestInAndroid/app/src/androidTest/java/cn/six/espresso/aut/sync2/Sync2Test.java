@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 
 import cn.six.espresso.async2.IServer;
 import cn.six.espresso.async2.Sync2Actv;
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;

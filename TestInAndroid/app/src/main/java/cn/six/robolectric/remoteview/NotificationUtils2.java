@@ -8,7 +8,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.RemoteViews;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 import cn.six.robolectric.notification.Notification_B;
 
 public class NotificationUtils2 {

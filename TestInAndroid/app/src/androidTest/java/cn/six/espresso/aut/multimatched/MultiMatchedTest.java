@@ -7,7 +7,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 import cn.six.espresso.multimatched.MultiMatchedActv;
 
 import static android.support.test.espresso.Espresso.onView;

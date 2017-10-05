@@ -13,8 +13,8 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
-import cn.six.espresso.aut.BuildConfig;
-import cn.six.espresso.aut.R;
+import cn.six.aut.BuildConfig;
+import cn.six.aut.R;
 import cn.six.espresso.jump.JumpFromActivity;
 import cn.six.espresso.jump.JumpToActivity;
 

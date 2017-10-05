@@ -3,7 +3,7 @@ package cn.six.espresso.first;
 import android.app.Activity;
 import android.os.Bundle;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 
 public class OneActivity extends Activity {

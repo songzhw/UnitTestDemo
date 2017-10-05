@@ -23,7 +23,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 
 /**

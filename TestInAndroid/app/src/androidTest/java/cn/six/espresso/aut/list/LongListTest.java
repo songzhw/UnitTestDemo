@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 import cn.six.espresso.list.ItemData;
 import cn.six.espresso.list.LongListActivity;
 

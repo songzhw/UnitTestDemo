@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.TextView;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 public class JumpToActivity extends Activity {
 

@@ -18,8 +18,8 @@ import org.robolectric.annotation.Config;
 import org.robolectric.internal.ShadowExtractor;
 import org.robolectric.shadows.ShadowNotificationManager;
 
-import cn.six.espresso.aut.BuildConfig;
-import cn.six.espresso.aut.R;
+import cn.six.aut.BuildConfig;
+import cn.six.aut.R;
 import cn.six.robolectric.notification.Notification_B;
 
 import static junit.framework.Assert.assertEquals;

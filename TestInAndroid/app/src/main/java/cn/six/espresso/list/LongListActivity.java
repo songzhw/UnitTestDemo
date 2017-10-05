@@ -14,7 +14,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 
 public class LongListActivity extends Activity {

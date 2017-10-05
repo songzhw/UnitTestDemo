@@ -15,7 +15,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 
 @SuppressWarnings("MissingPermission")

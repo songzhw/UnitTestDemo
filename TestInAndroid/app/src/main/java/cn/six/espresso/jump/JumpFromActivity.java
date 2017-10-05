@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 
 public class JumpFromActivity extends Activity implements View.OnClickListener {

@@ -9,8 +9,8 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
-import cn.six.espresso.aut.BuildConfig;
-import cn.six.espresso.aut.R;
+import cn.six.aut.BuildConfig;
+import cn.six.aut.R;
 
 import static org.junit.Assert.*;
 

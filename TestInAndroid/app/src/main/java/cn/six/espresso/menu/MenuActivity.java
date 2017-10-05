@@ -13,7 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 /**
  * Shows MenuActivity with Options menu, Context menu and Popup menu. Click on a menu item changes

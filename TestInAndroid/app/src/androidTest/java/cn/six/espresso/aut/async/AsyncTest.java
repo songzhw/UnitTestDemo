@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 
 import cn.six.espresso.async.AsyncTaskActivity;
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;

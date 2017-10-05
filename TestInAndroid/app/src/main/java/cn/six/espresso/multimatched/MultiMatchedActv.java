@@ -3,7 +3,7 @@ package cn.six.espresso.multimatched;
 import android.app.Activity;
 import android.os.Bundle;
 
-import cn.six.espresso.aut.R;
+import cn.six.aut.R;
 
 /**
  * @author songzhw

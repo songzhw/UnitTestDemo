@@ -10,8 +10,8 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
-import cn.six.espresso.aut.BuildConfig;
-import cn.six.espresso.aut.R;
+import cn.six.aut.BuildConfig;
+import cn.six.aut.R;
 
 import static junit.framework.Assert.assertEquals;
 

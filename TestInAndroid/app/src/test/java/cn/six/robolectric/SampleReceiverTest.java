@@ -16,7 +16,7 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.shadows.ShadowTelephonyManager;
 
-import cn.six.espresso.aut.BuildConfig;
+import cn.six.aut.BuildConfig;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

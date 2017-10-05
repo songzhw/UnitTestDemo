@@ -32,7 +32,6 @@
         <activity android:name="cn.six.robolectric.notification.Notification_D"/>
         <activity android:name="cn.six.robolectric.notification.Notification_E"/>
 
-        <service android:name=".SzwService" />
         <service
             android:name="cn.six.service.MyIntentService"
             android:exported="false"></service>

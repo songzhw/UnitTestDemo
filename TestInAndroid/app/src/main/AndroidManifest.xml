@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         tools:overrideLibrary="android.support.test.uiautomator.v18">
         <activity
-            android:name="cn.six.http.HttpDemo"
+            android:name="cn.six.espresso.jump.JumpFromActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name="cn.six.espresso.first.OneActivity" />
-        <activity android:name="cn.six.espresso.jump.JumpFromActivity" />
+        <!--<activity android:name="cn.six.espresso.jump.JumpFromActivity" />-->
         <activity android:name="cn.six.espresso.jump.JumpToActivity" />
         <activity android:name="cn.six.espresso.multiwindow.SuggestActivity" />
         <!-- <activity android:name="cn.six.async.AsyncTaskActivity"/> -->

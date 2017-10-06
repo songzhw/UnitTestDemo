@@ -22,7 +22,7 @@ import static junit.framework.Assert.assertNull;
  * Created by songzhw on 2016-09-27
  */
 @RunWith(RobolectricTestRunner.class)  // 不用这个， 就在buildActivity时会错的
-@Config(constants = BuildConfig.class) // 修复说找不到AndroidManifest的warning
+@Config(constants = BuildConfig.class, sdk=21) // 修复说找不到AndroidManifest的warning
 public class Jump2ActivityTest {
     public JumpToActivity toActivity;
     public TextView tv;

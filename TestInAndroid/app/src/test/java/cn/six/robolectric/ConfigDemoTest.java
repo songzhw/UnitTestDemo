@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * Created by songzhw on 2017-03-30
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class)
+@Config(constants = BuildConfig.class, sdk=21)
 public class ConfigDemoTest {
     @Test
     public void rotateScreen(){

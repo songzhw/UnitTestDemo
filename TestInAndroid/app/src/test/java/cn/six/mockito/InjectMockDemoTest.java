@@ -9,13 +9,12 @@ import org.mockito.MockitoAnnotations;
 import static junit.framework.Assert.*;
 import static org.mockito.Mockito.when;
 
-
 public class InjectMockDemoTest {
     @Mock
     public User user;
 
     @InjectMocks
-    public InjectMockDemo obj;
+    public InjectMockDemo obj = new InjectMockDemo("24");
 
     @Before
     public void setUp(){
@@ -28,12 +27,11 @@ public class InjectMockDemoTest {
         assertEquals("[szw]", obj.modify());
     }
 
-
     // 同样测试成功. 看来会走默认的CF
     @Test
     public void testInjectMock(){
-        assertEquals("23", obj.id);
+        assertEquals("24", obj.id);
     }
-
 }
+
 

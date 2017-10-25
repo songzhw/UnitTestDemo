@@ -1,6 +1,5 @@
 package cn.six.mockito;
 
-
 public class InjectMockDemo {
     public User user;
     public String id;
@@ -13,4 +12,5 @@ public class InjectMockDemo {
         return"[" + user.getName() + "]";
     }
 }
+
 

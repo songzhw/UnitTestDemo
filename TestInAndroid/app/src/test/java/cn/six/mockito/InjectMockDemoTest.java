@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
+import static org.mockito.Mockito.*;
 
 public class InjectMockDemoTest {
     @InjectMocks
@@ -13,6 +14,7 @@ public class InjectMockDemoTest {
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
+        when(name.toLowerCase()).thenReturn("SZW");
     }
 
     @Test
@@ -21,3 +23,4 @@ public class InjectMockDemoTest {
         System.out.println(obj.modify());
     }
 }
+

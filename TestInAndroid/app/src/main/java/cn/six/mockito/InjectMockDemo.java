@@ -1,9 +1,10 @@
 package cn.six.mockito;
 
+
 public class InjectMockDemo {
-    public String name;
+    public User user;
 
     public String modify(){
-        return"[" + name.toLowerCase() + "]";
+        return"[" + user.getName() + "]";
     }
 }

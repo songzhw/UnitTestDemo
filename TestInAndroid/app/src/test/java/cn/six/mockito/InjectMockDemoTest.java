@@ -3,24 +3,29 @@ package cn.six.mockito;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.*;
+import static junit.framework.Assert.*;
+import static org.mockito.Mockito.when;
+
 
 public class InjectMockDemoTest {
+    @Mock
+    public User user;
+
     @InjectMocks
-    public String name;
+    public InjectMockDemo obj;
 
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        when(name.toLowerCase()).thenReturn("SZW");
+        when(user.getName()).thenReturn("szw");
     }
 
     @Test
     public void testModify(){
-        InjectMockDemo obj = new InjectMockDemo();
-        System.out.println(obj.modify());
+        assertEquals("[szw]", obj.modify());
     }
 }
 

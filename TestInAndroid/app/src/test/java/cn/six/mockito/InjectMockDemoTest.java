@@ -27,5 +27,13 @@ public class InjectMockDemoTest {
     public void testModify(){
         assertEquals("[szw]", obj.modify());
     }
+
+
+    // 同样测试成功. 看来会走默认的CF
+    @Test
+    public void testInjectMock(){
+        assertEquals("23", obj.id);
+    }
+
 }
 

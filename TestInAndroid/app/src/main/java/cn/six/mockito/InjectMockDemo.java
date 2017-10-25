@@ -5,8 +5,8 @@ public class InjectMockDemo {
     public User user;
     public String id;
 
-    public InjectMockDemo(){
-        id = "23";
+    public InjectMockDemo(String id){
+        this.id = id;
     }
 
     public String modify(){

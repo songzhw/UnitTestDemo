@@ -13,6 +13,13 @@ public class CustomRuleTest {
     public LoggerRule logger = new LoggerRule();
 
     @Rule
+    public ConsumedTime time = new ConsumedTime(); //要加public, 否则会fail
+
+    // @Rule
+    //   public MockitoRule mockitoRule = MockitoJUnit.rule();
+
+
+    @Rule
     public TestWatcher watchman = new TestWatcher() {
         @Override
         public Statement apply(Statement base, Description description) {
